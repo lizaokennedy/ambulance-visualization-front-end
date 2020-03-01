@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "jest --watch"
+    "test:unit": "jest",
+    "test": "jest"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -26,6 +27,7 @@
     "@vue/cli-plugin-eslint": "~4.2.0",
     "@vue/cli-plugin-router": "~4.2.0",
     "@vue/cli-plugin-typescript": "~4.2.0",
+    "@vue/cli-plugin-unit-jest": "^4.2.3",
     "@vue/cli-service": "~4.2.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.1",
@@ -74,6 +76,7 @@
     "last 2 versions"
   ],
   "jest": {
+    "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "** /*.{vue}', '!**/node_modules/**', '!<rootDir>/dist/**",
