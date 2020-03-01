@@ -5,8 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "jest --watch"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -73,6 +73,15 @@
     "last 2 versions"
   ],
   "jest": {
-    "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel"
+    "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "** /*.{vue}', '!**/node_modules/**', '!<rootDir>/dist/**",
+      "!<rootDir>/src/plugins/**', '!<rootDir>/tests/unit/**"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
+    ]
   }
 }

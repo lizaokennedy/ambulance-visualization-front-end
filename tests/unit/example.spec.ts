@@ -1,21 +1,30 @@
-import { shallowMount, createLocalVue, mount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import { shallowMount } from '@vue/test-utils'
+import ButtonCount from '@/components/ButtonCount.vue'
 import Vuetify from "vuetify/lib";
 
-describe("HelloWorld.vue", () => {
-  let localVue;
-  let wrapper;
-  beforeAll(() => {
-    localVue = createLocalVue();
-    localVue.use(Vuetify, {});
-    wrapper = mount(HelloWorld, {localVue})
+describe('ButtonCount.vue', () => {
+  const wrapper = shallowMount(ButtonCount)
+
+  // checks ButtonCount is a component.
+  it('Register is a component', () => {
+    expect(wrapper.isVueInstance()).toBeTruthy()
   })
 
-  it("renders props.msg when passed", () => {
-    const msg = "new message";
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
-    });
-    expect(wrapper.text()).toMatch(msg);
-  });
-});
+  // checks value of the counter is zero initially
+  it('count is initially zero', () => {
+    expect(wrapper.vm.$data.count).toBe(0)
+  })
+
+  // check the button present or not
+  it('is the button present', () => {
+    expect(wrapper.contains('button')).toBe(true)
+  })
+
+  // checks the counter increment on clicking the button
+  it('counter incremented or not', () => {
+    expect(wrapper.vm.$data.count).toBe(0)
+    const button = wrapper.find('button')
+    button.trigger('click')
+    expect(wrapper.vm.$data.count).toBe(1)
+  })
+})
