@@ -1,5 +1,5 @@
 TN:
-SF:/home/liza/Documents/hello-world/src/assets/logo.svg
+SF:/home/liza/Documents/ambulance-visualization/src/assets/logo.svg
 FNF:0
 FNH:0
 DA:1,1
@@ -9,7 +9,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/liza/Documents/hello-world/src/components/HelloWorld.vue
+SF:/home/liza/Documents/ambulance-visualization/src/components/HelloWorld.vue
 FN:90,(anonymous_1)
 FNF:1
 FNH:1
