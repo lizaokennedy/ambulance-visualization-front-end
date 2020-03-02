@@ -1,4 +1,4 @@
-# ambulance-visualization
+# hello-world
 
 ## Project setup
 ```
