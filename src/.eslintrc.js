@@ -3,7 +3,6 @@ module.exports = {
     'plugin:vue/recommended'
   ],
   rules: {
-    // override/add rules settings here, such as:
-    // 'vue/no-unused-vars': 'error'
+    'jsx-quotes': ['error', 'prefer-single']
   }
 }
