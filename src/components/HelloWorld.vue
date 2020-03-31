@@ -21,17 +21,21 @@ export default Vue.extend({
   methods: {
     async getTitle () {
       let title = ''
-      await fetch('http://127.0.0.1:5000/api')
-        .then(response => {
-          return response.json()
-        })
-        .then(myJson => {
-          title = myJson.data
-          const heading = document.getElementById('heading')
-          if (heading !== null) {
-            heading.innerHTML = title
-          }
-        })
+      try {
+        await fetch('http://127.0.0.1:5000/api')
+          .then(response => {
+            return response.json()
+          })
+          .then(myJson => {
+            title = myJson.data
+            const heading = document.getElementById('heading')
+            if (heading !== null) {
+              heading.innerHTML = title
+            }
+          })
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 })

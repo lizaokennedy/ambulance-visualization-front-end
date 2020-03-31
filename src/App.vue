@@ -27,14 +27,26 @@
 
       <v-spacer />
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn
+            color="primary"
+            dark
+            v-on="on"
+          >
+            {{ $i18n.locale }}
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="(item, index) in langs"
+            :key="index"
+            @click="changeLang(item.short)"
+          >
+            <v-list-item-title>{{ item.full }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
 
     <v-content>
@@ -46,16 +58,30 @@
 <script lang="ts">
 import Vue from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
+import i18n from './i18n'
+import router from './router'
 
 export default Vue.extend({
   name: 'App',
-
   components: {
     HelloWorld
   },
-
-  data: () => ({
-    //
-  })
+  data () {
+    return {
+      langs: [
+        { short: 'en', full: 'English' },
+        { short: 'sv', full: 'Swedish' }
+      ]
+    }
+  },
+  methods: {
+    changeLang: (lang: string) => {
+      i18n.locale = lang
+      router.push({
+        params: { lang: lang }
+      })
+      console.log(lang)
+    }
+  }
 })
 </script>
