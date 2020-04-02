@@ -1,6 +1,7 @@
 {
-  "message": "hello i18n !!",
-  "nav": {
-    "changeLang": "Change Language"
+  "message": "Welcome to Ambu-Lenz!",
+  "sidebar": {
+    "startSimulation": "Start Simulation",
+    "showHistory": "Simulation History"
   }
 }

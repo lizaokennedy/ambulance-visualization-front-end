@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <h1 id="heading">
+    <!-- <h1 id="heading" >
       {{ getTitle() }}
-    </h1>
+    </h1> -->
   </v-container>
 </template>
 

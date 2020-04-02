@@ -1,6 +1,7 @@
 {
-   "message": "Hälsning i18n!",
-   "nav": {
-    "changeLang": "Ändra språk"
+   "message": "Välkommen till Ambu-Lenz!",
+   "sidebar": {
+    "startSimulation": "Starta Simulering",
+    "showHistory": "Simuleringshistorik"
   }
 }
