@@ -1,19 +1,18 @@
 <template>
   <div class="home">
-    <img
-      alt="Vue logo"
-      src="../assets/logo.png"
-    >
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Title />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import Title from '../components/Title.vue'
 
 export default Vue.extend({
   name: 'Home',
-
+  components: {
+    Title
+  },
   data: () => ({
     //
   })

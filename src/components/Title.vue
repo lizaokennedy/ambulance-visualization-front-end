@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <!-- <h1 id="heading" >
-      {{ getTitle() }}
-    </h1> -->
+    <h1 class="display-1 font-weight-thin mb-4">
+      Welcome
+    </h1>
   </v-container>
 </template>
 
@@ -10,7 +10,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'HelloWorld',
+  name: 'Title',
 
   data () {
     return {

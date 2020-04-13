@@ -8,16 +8,15 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
-router.beforeEach((to, from, next) => {
-  let lang: string = to.params.lang
-  if (!lang) {
-    lang = 'en'
-  }
-
-  i18n.locale = lang
-  next()
-})
-
+// router.beforeEach((to, from, next) => {
+//   let lang: string = to.params.lang
+//   if (!lang) {
+//     lang = 'en'
+//   }
+//   i18n.locale = lang
+//   next()
+// })
+require('./assets/styles/app.css')
 new Vue({
   router,
   store,
