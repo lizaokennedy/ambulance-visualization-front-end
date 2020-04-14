@@ -65,7 +65,7 @@ export default Vue.extend({
     }
   },
   data: () => ({
-    analysisLink: '/' + i18n.locale + '/history'
+    analysisLink: '/' + i18n.locale + '/analysis'
   })
 })
 </script>

@@ -2,8 +2,7 @@ import Vue, { Component } from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import History from '../views/History.vue'
-import TitleBar from '../components/TitleBar.vue'
-import App from '../App.vue'
+import Analysis from '../components/Analysis.vue'
 import i18n from '@/i18n'
 
 Vue.use(VueRouter)
@@ -20,6 +19,10 @@ const routes = [
   {
     path: '/:lang/history',
     component: History
+  },
+  {
+    path: '/:lang/analysis',
+    component: Analysis
   }
 ]
 
