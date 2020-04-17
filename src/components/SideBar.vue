@@ -4,37 +4,52 @@
       v-model="sidebar"
       :mini-variant.sync="mini"
       permanent
+      expand-on-hover
       color="transparent"
       light
       app
     >
-      <v-list-item class="display-1 font-weight-thin mb-4">
-        <v-list-item-avatar class="side-icon">
-          <v-btn
-            icon
-            dark
-            @click.stop="mini = !mini"
-          >
-            <v-icon dark>
-              mdi-chevron-left
-            </v-icon>
-          </v-btn>
-        </v-list-item-avatar>
-
-        <v-list-item-title />
-      </v-list-item>
-
       <v-list
         class="display-1 font-weight-thin mb-4"
         dense
       >
+        <v-list-item class="display-1 font-weight-thin mb-4">
+          <v-list-item-avatar class="side-icon">
+            <router-link
+              class="link"
+              :to="HomeLink"
+            >
+              <v-icon
+                dark
+                class="icon"
+              >
+                mdi-home
+              </v-icon>
+            </router-link>
+          </v-list-item-avatar>
+          <router-link
+            class="link"
+            :to="HomeLink"
+          >
+            <v-list-item-title
+              class="display-1 font-weight-light mb-4 subtitle-1"
+              dark
+            >
+              Ambu-Lenz
+            </v-list-item-title>
+          </router-link>
+          <v-list-item-title />
+        </v-list-item>
+
         <v-list-item
           v-for="item in sidebarItems"
           :key="item.title"
-          link
         >
           <v-list-item-icon dark>
-            <router-link :to="item.link">
+            <router-link
+              class="link"
+              :to="item.link"
+            >
               <v-icon
                 dark
                 class="icon"
@@ -45,9 +60,17 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title class="display-1 font-weight-light mb-4 subtitle-2">
-              {{ $t(item.title) }}
-            </v-list-item-title>
+            <router-link
+              class="link"
+              :to="item.link"
+            >
+              <v-list-item-title
+                class="display-1 font-weight-light mb-4 subtitle-2"
+                color="white"
+              >
+                {{ $t(item.title) }}
+              </v-list-item-title>
+            </router-link>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -63,6 +86,7 @@ export default Vue.extend({
   name: 'SideBar',
 
   data: () => ({
+    HomeLink: '/' + i18n.locale,
     sidebar: true,
     sidebarItems: [
       {

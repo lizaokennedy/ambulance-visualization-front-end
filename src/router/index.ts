@@ -2,7 +2,7 @@ import Vue, { Component } from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import History from '../views/History.vue'
-import Analysis from '../components/Analysis.vue'
+import Analysis from '../views/Analysis.vue'
 import i18n from '@/i18n'
 
 Vue.use(VueRouter)

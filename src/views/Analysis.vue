@@ -1,5 +1,5 @@
 <template>
-  <div class="history">
+  <div class="analysis">
     <v-card
       class="history-list"
       outlined
@@ -26,10 +26,9 @@
 export default {
   name: 'Analysis',
   components: {
-    HistoryItem
   },
   data: () => ({
-    
+
   })
 }
 </script>

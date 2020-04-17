@@ -19,6 +19,10 @@
     margin-bottom: 0px;
 }
 
+.link {
+    text-decoration: dashed;
+}
+
 router-link{
     text-decoration: underline;
 }
