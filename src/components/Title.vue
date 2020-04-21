@@ -6,12 +6,13 @@
     >
       <v-list-item three-line>
         <v-list-item-content>
-          <v-list-item-title class="headline mb-1 display-1 font-weight-thin">
-            Welcome
-          </v-list-item-title>
-          <v-list-item-subtitle
-            class="font-weight-light md-2"
+          <v-list-item-title
+            id="heading"
+            class="headline mb-1 display-1 font-weight-thin"
           >
+            {{ getTitle() }}
+          </v-list-item-title>
+          <v-list-item-subtitle class="font-weight-light md-2">
             This is Ambu-Lenz
           </v-list-item-subtitle>
         </v-list-item-content>
@@ -42,6 +43,7 @@
 import Vue from 'vue'
 import Card from '../components/TitleCard.vue'
 import i18n from '../i18n'
+import DataService from '../services/data.service'
 
 export default Vue.extend({
   name: 'Title',
@@ -52,6 +54,7 @@ export default Vue.extend({
   data () {
     return {
       title: 'hello',
+      dataService: DataService,
       startSim: {
         title: 'sidebar.startSimulation',
         icon: 'mdi-play-circle-outline',
@@ -66,23 +69,15 @@ export default Vue.extend({
   },
   computed: {}, // computed properties
   methods: {
-    async getTitle () {
-      let title = ''
-      try {
-        await fetch('http://127.0.0.1:5000/api')
-          .then(response => {
-            return response.json()
-          })
-          .then(myJson => {
-            title = myJson.data
-            const heading = document.getElementById('heading')
-            if (heading !== null) {
-              heading.innerHTML = title
-            }
-          })
-      } catch (error) {
-        console.log(error)
-      }
+    getTitle () {
+      DataService.getTitle().then(title => {
+        if (title !== undefined) {
+          const heading = document.getElementById('heading')
+          if (heading !== null) {
+            heading.innerHTML = title
+          }
+        }
+      })
     }
   }
 })
