@@ -1,7 +1,6 @@
 <template>
   <div class="history">
-    <v-card class="history-list"
-outlined>
+    <v-card class="history-list" outlined>
       <v-list-item three-line>
         <v-list-item-content>
           <v-list-item-title class="headline mb-1 display-1 font-weight-thin">
@@ -13,14 +12,14 @@ outlined>
         </v-list-item-content>
       </v-list-item>
       <v-list>
-        <v-list-item v-for="(item, i) in history"
-:key="i">
+        <v-list-item v-for="(item, i) in pastSimulation" :key="i">
           <v-list-item-content>
             <HistoryItem
-              :title="item.title"
-              :day="item.day"
-              :duration="item.duration"
+              :id="item.id"
+              :startTime="item.startTime"
+              :endTime="item.endTime"
               :year="item.year"
+              :status="item.status"
             />
           </v-list-item-content>
         </v-list-item>
@@ -32,6 +31,7 @@ outlined>
 <script>
 // @ is an alias to /src
 import HistoryItem from "../components/HistoryItem.vue";
+import DataService from "../services/data.service";
 
 export default {
   name: "History",
@@ -39,20 +39,17 @@ export default {
     HistoryItem
   },
   data: () => ({
-    history: [
-      {
-        title: "A simulation",
-        day: "15 April",
-        duration: "39 mins",
-        year: "2017"
-      },
-      {
-        title: "A Second Simulation",
-        day: "17 April",
-        duration: "54 mins",
-        year: "2019"
+    dataService: DataService
+  }),
+  asyncComputed: {
+    pastSimulation() {
+      const sims = DataService.fetchSimulations();
+      if (sims !== undefined) {
+        return sims;
+      } else {
+        return undefined;
       }
-    ]
-  })
+    }
+  }
 };
 </script>

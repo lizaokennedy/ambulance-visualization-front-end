@@ -1,50 +1,21 @@
-import { Model, Collection } from "vue-mc";
-// import data service
+export default class Simulation {
+  id: number;
+  year: number;
+  startTime: number;
+  endTime: number;
+  status: string;
 
-class Simulation extends Model {
-  // Default attributes that define the "empty" state.
-  defaults() {
-    return {
-      id: null,
-      year: null,
-      startTime: null,
-      endTime: null,
-      duration: null,
-      status: false
-    };
-  }
-
-  // Attribute mutations.
-  mutations() {
-    return {
-      id: (id: number) => Number(id) || null,
-      year: (year: number) => Number(year) || null,
-      startTime: (startTime: number) => Number(startTime) || null,
-      endTime: (endTime: number) => Number(endTime) || null,
-      duration: (duration: number) => Number(duration) || null,
-      status: Boolean
-    };
-  }
-  // //How to create own functions
-  // get version() {
-  //     return this.id;
-  // }
-}
-
-class Simulations extends Collection {
-  // Model that is contained in this collection.
-  model() {
-    return Simulation;
-  }
-
-  // Default attributes
-  defaults() {
-    return {
-      orderBy: "id"
-    };
-  }
-
-  get numSims() {
-    return this.sum("id");
+  constructor(
+    id: number,
+    year: number,
+    startTime: number,
+    endTime: number,
+    status: string
+  ) {
+    this.id = id;
+    this.year = year;
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.status = status;
   }
 }

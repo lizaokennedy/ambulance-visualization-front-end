@@ -1,7 +1,6 @@
 <template>
   <nav>
-    <v-app-bar app
-color="transparent" class=".font-weight-thin" dark flat>
+    <v-app-bar app color="transparent" class=".font-weight-thin" dark flat>
       <h1 class="display-1 font-weight-thin mb-4">
         {{ $t("message") }}
       </h1>
@@ -9,8 +8,7 @@ color="transparent" class=".font-weight-thin" dark flat>
 
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn color="transparent"
-flat v-on="on">
+          <v-btn color="transparent" flat v-on="on">
             {{ $i18n.locale }}
           </v-btn>
         </template>

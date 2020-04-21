@@ -8,10 +8,10 @@
               <v-list-item-title
                 class="headline mb-1 display-1 font-weight-thin"
               >
-                {{ title }}
+                Simulation {{ id }}
               </v-list-item-title>
               <v-list-item-subtitle class="font-weight-light md-2">
-                {{ day }}
+                {{ startTime }} - {{ endTime }}
               </v-list-item-subtitle>
             </v-col>
             <v-col>
@@ -21,7 +21,7 @@
                 {{ year }}
               </v-list-item-title>
               <v-list-item-subtitle class="font-weight-light md-2">
-                {{ duration }}
+                {{ status }}
               </v-list-item-subtitle>
             </v-col>
             <v-col>
@@ -47,21 +47,30 @@ export default Vue.extend({
   name: "HistoryItem",
   components: {},
   props: {
-    title: {
-      type: String,
-      required: true
+    id: {
+      type: Number,
+      default: 0,
+      required: false
     },
-    day: {
-      type: String,
-      required: true
+    startTime: {
+      type: Number,
+      default: 0,
+      required: false
+    },
+    endTime: {
+      type: Number,
+      default: 0,
+      required: false
     },
     year: {
-      type: String,
-      required: true
+      type: Number,
+      default: 0,
+      required: false
     },
-    duration: {
+    status: {
       type: String,
-      required: true
+      default: "None Found",
+      required: false
     }
   },
   data: () => ({

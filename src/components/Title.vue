@@ -7,7 +7,7 @@
             id="heading"
             class="headline mb-1 display-1 font-weight-thin"
           >
-            {{ getTitle() }}
+            Ambu-Lenz
           </v-list-item-title>
           <v-list-item-subtitle class="font-weight-light md-2">
             This is Ambu-Lenz

@@ -5,6 +5,7 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
+import AsyncComputed from "vue-async-computed";
 
 Vue.config.productionTip = false;
 
@@ -16,7 +17,11 @@ Vue.config.productionTip = false;
 //   i18n.locale = lang
 //   next()
 // })
+
 require("./assets/styles/app.css");
+
+Vue.use(AsyncComputed);
+
 new Vue({
   router,
   store,
