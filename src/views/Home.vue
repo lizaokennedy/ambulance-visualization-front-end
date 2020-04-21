@@ -5,16 +5,16 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Title from '../components/Title.vue'
+import Vue from "vue";
+import Title from "../components/Title.vue";
 
 export default Vue.extend({
-  name: 'Home',
+  name: "Home",
   components: {
     Title
   },
   data: () => ({
     //
   })
-})
+});
 </script>

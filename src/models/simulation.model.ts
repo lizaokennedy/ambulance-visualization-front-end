@@ -1,9 +1,9 @@
-import { Model, Collection } from 'vue-mc'
+import { Model, Collection } from "vue-mc";
 // import data service
 
 class Simulation extends Model {
   // Default attributes that define the "empty" state.
-  defaults () {
+  defaults() {
     return {
       id: null,
       year: null,
@@ -11,11 +11,11 @@ class Simulation extends Model {
       endTime: null,
       duration: null,
       status: false
-    }
+    };
   }
 
   // Attribute mutations.
-  mutations () {
+  mutations() {
     return {
       id: (id: number) => Number(id) || null,
       year: (year: number) => Number(year) || null,
@@ -23,7 +23,7 @@ class Simulation extends Model {
       endTime: (endTime: number) => Number(endTime) || null,
       duration: (duration: number) => Number(duration) || null,
       status: Boolean
-    }
+    };
   }
   // //How to create own functions
   // get version() {
@@ -33,18 +33,18 @@ class Simulation extends Model {
 
 class Simulations extends Collection {
   // Model that is contained in this collection.
-  model () {
-    return Simulation
+  model() {
+    return Simulation;
   }
 
   // Default attributes
-  defaults () {
+  defaults() {
     return {
-      orderBy: 'id'
-    }
+      orderBy: "id"
+    };
   }
 
-  get numSims () {
-    return this.sum('id')
+  get numSims() {
+    return this.sum("id");
   }
 }

@@ -1,9 +1,6 @@
 <template>
   <v-container>
-    <v-card
-      class="history-list"
-      outlined
-    >
+    <v-card class="history-list" outlined>
       <v-list-item three-line>
         <v-list-item-content>
           <v-list-item-title
@@ -40,45 +37,45 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Card from '../components/TitleCard.vue'
-import i18n from '../i18n'
-import DataService from '../services/data.service'
+import Vue from "vue";
+import Card from "../components/TitleCard.vue";
+import i18n from "../i18n";
+import DataService from "../services/data.service";
 
 export default Vue.extend({
-  name: 'Title',
+  name: "Title",
   components: {
     Card
   },
 
-  data () {
+  data() {
     return {
-      title: 'hello',
+      title: "hello",
       dataService: DataService,
       startSim: {
-        title: 'sidebar.startSimulation',
-        icon: 'mdi-play-circle-outline',
-        link: ''
+        title: "sidebar.startSimulation",
+        icon: "mdi-play-circle-outline",
+        link: ""
       },
       history: {
-        title: 'sidebar.showHistory',
-        icon: 'mdi-history',
-        link: '/' + i18n.locale + '/history'
+        title: "sidebar.showHistory",
+        icon: "mdi-history",
+        link: "/" + i18n.locale + "/history"
       }
-    }
+    };
   },
   computed: {}, // computed properties
   methods: {
-    getTitle () {
+    getTitle() {
       DataService.getTitle().then(title => {
         if (title !== undefined) {
-          const heading = document.getElementById('heading')
+          const heading = document.getElementById("heading");
           if (heading !== null) {
-            heading.innerHTML = title
+            heading.innerHTML = title;
           }
         }
-      })
+      });
     }
   }
-})
+});
 </script>

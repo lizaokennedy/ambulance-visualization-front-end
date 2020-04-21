@@ -1,1 +1,1 @@
-declare module 'vue-mc'
+declare module "vue-mc";

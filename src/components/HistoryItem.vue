@@ -40,11 +40,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import i18n from '../i18n'
+import Vue from "vue";
+import i18n from "../i18n";
 
 export default Vue.extend({
-  name: 'HistoryItem',
+  name: "HistoryItem",
   components: {},
   props: {
     title: {
@@ -65,7 +65,7 @@ export default Vue.extend({
     }
   },
   data: () => ({
-    analysisLink: '/' + i18n.locale + '/analysis'
+    analysisLink: "/" + i18n.locale + "/analysis"
   })
-})
+});
 </script>

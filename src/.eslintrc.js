@@ -1,8 +1,6 @@
 module.exports = {
-  extends: [
-    'plugin:vue/recommended'
-  ],
+  extends: ["plugin:vue/recommended"],
   rules: {
-    'jsx-quotes': ['error', 'prefer-single']
+    "jsx-quotes": ["error", "prefer-single"]
   }
-}
+};

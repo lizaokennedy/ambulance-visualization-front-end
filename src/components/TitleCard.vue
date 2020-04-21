@@ -16,11 +16,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import i18n from '../i18n'
+import Vue from "vue";
+import i18n from "../i18n";
 
 export default Vue.extend({
-  name: 'TitleCard',
+  name: "TitleCard",
   components: {},
   props: {
     title: {
@@ -37,5 +37,5 @@ export default Vue.extend({
     }
   },
   data: () => ({})
-})
+});
 </script>
