@@ -1,6 +1,7 @@
 <template>
   <div class="history">
-    <v-card class="history-list" outlined>
+    <v-card class="history-list"
+outlined>
       <v-list-item three-line>
         <v-list-item-content>
           <v-list-item-title class="headline mb-1 display-1 font-weight-thin">
@@ -12,12 +13,13 @@
         </v-list-item-content>
       </v-list-item>
       <v-list>
-        <v-list-item v-for="(item, i) in results" :key="i">
+        <v-list-item v-for="(item, i) in results"
+:key="i">
           <v-list-item-content>
             <HistoryItem
               :id="item.id"
-              :startTime="item.startTime"
-              :endTime="item.endTime"
+              :start-time="item.startTime"
+              :end-time="item.endTime"
               :year="item.year"
               :status="item.status"
             />
@@ -48,22 +50,5 @@ export default {
       this.results = response;
     });
   }
-  // asyncComputed: {
-  //   async pastSimulation() {
-  //     let simulations = [];
-  //     const sims = await DataService.fetchSimulations().then(sims => {
-  //       if (sims !== undefined) {
-  //         // console.log(sims[0].id);
-  //         simulations = sims;
-  //       } else {
-  //         const s = new Simulation(0, 2000, 0, 0, "Done");
-  //         simulations = s;
-  //       }
-  //     });
-  //     console.log(sims);
-  //     console.log(simulations[0]);
-  //     return simulations;
-  //   }
-  // }
 };
 </script>

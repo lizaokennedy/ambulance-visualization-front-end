@@ -54,6 +54,30 @@ const DataService = {
     }
 
     return simList;
+  },
+
+  async getShortestPath(node1: number, node2: number) {
+    let path: any = "";
+    try {
+      await axios
+        .get("http://127.0.0.1:5000/api/getShortestPath", {
+          params: {
+            start: 12345,
+            end: 12346
+          }
+        })
+        .then(function(response: AxiosResponse) {
+          path = response;
+          console.log(path);
+        })
+        .catch(function(error: Error) {
+          console.log(error);
+        });
+
+      return path;
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 

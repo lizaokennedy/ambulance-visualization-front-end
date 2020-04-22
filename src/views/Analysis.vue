@@ -1,6 +1,7 @@
 <template>
   <div class="analysis">
-    <v-card class="history-list" outlined>
+    <v-card class="history-list"
+outlined>
       <v-list-item three-line>
         <v-list-item-content>
           <v-list-item-title class="headline mb-1 display-1 font-weight-thin">

@@ -7,7 +7,7 @@
             id="heading"
             class="headline mb-1 display-1 font-weight-thin"
           >
-            Ambu-Lenz
+            {{ getShortestPath() }}
           </v-list-item-title>
           <v-list-item-subtitle class="font-weight-light md-2">
             This is Ambu-Lenz
@@ -72,6 +72,16 @@ export default Vue.extend({
           const heading = document.getElementById("heading");
           if (heading !== null) {
             heading.innerHTML = title;
+          }
+        }
+      });
+    },
+    getShortestPath() {
+      DataService.getShortestPath(10, 12).then(path => {
+        if (path !== undefined) {
+          const heading = document.getElementById("heading");
+          if (heading !== null) {
+            heading.innerHTML = path;
           }
         }
       });
