@@ -12,7 +12,7 @@
         </v-list-item-content>
       </v-list-item>
       <v-list>
-        <v-list-item v-for="(item, i) in pastSimulation" :key="i">
+        <v-list-item v-for="(item, i) in results" :key="i">
           <v-list-item-content>
             <HistoryItem
               :id="item.id"
@@ -32,6 +32,7 @@
 // @ is an alias to /src
 import HistoryItem from "../components/HistoryItem.vue";
 import DataService from "../services/data.service";
+// import Simulation from "../models/simulation.model";
 
 export default {
   name: "History",
@@ -39,17 +40,30 @@ export default {
     HistoryItem
   },
   data: () => ({
-    dataService: DataService
+    dataService: DataService,
+    results: []
   }),
-  asyncComputed: {
-    pastSimulation() {
-      const sims = DataService.fetchSimulations();
-      if (sims !== undefined) {
-        return sims;
-      } else {
-        return undefined;
-      }
-    }
+  mounted() {
+    DataService.fetchSimulations().then(response => {
+      this.results = response;
+    });
   }
+  // asyncComputed: {
+  //   async pastSimulation() {
+  //     let simulations = [];
+  //     const sims = await DataService.fetchSimulations().then(sims => {
+  //       if (sims !== undefined) {
+  //         // console.log(sims[0].id);
+  //         simulations = sims;
+  //       } else {
+  //         const s = new Simulation(0, 2000, 0, 0, "Done");
+  //         simulations = s;
+  //       }
+  //     });
+  //     console.log(sims);
+  //     console.log(simulations[0]);
+  //     return simulations;
+  //   }
+  // }
 };
 </script>

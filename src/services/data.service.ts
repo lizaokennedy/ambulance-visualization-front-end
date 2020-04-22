@@ -28,12 +28,11 @@ const DataService = {
         .get("http://127.0.0.1:5000/api/getAllSimulations")
         .then(function(response: AxiosResponse) {
           sims = response.data.sims;
-          console.log(sims);
+          // console.log(sims);
         })
         .catch(function(error: Error) {
           console.log(error);
         });
-
       return this.createSimulationList(sims, sims.length);
     } catch (error) {
       console.log(error);
@@ -43,14 +42,13 @@ const DataService = {
   createSimulationList(sims: any, length: number) {
     let i;
     const simList: Simulation[] = [];
-
     for (i = 0; i < length; i++) {
       const s = new Simulation(
-        sims[i].id,
-        sims[i].year,
-        sims[i].startTime,
-        sims[i].endTime,
-        sims[i].status
+        sims[i].Simulation.id,
+        sims[i].Simulation.year,
+        sims[i].Simulation.startTime,
+        sims[i].Simulation.endTime,
+        sims[i].Simulation.status
       );
       simList.push(s);
     }

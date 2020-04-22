@@ -50,27 +50,27 @@ export default Vue.extend({
     id: {
       type: Number,
       default: 0,
-      required: false
+      required: true
     },
     startTime: {
       type: Number,
       default: 0,
-      required: false
+      required: true
     },
     endTime: {
       type: Number,
       default: 0,
-      required: false
+      required: true
     },
     year: {
       type: Number,
       default: 0,
-      required: false
+      required: true
     },
     status: {
       type: String,
       default: "None Found",
-      required: false
+      required: true
     }
   },
   data: () => ({
