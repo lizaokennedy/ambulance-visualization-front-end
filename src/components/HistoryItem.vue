@@ -26,7 +26,7 @@
             </v-col>
             <v-col>
               <router-link :to="analysisLink">
-                <v-icon>mdi-chart-line</v-icon>
+                <v-icon class="icon" color="accent">mdi-chart-line</v-icon>
               </router-link>
               <v-list-item-subtitle class="font-weight-light md-2">
                 See Simulation results

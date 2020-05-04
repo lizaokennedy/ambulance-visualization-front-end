@@ -1,5 +1,6 @@
 {
-   "message": "Välkommen till Ambu-Lenz!",
+   "welcome": "Välkommen till Ambu-Lenz!",
+   "intro": "Ambu-Lenz är ett analysverktyg som är utformat för att extrahera data från simuleringar av ambulanssvar. Dessa data kan sedan ge insikt om hur man bättre kan organisera resurser för en effektivare räddningstjänst.",
    "sidebar": {
     "startSimulation": "Starta Simulering",
     "showHistory": "Simuleringshistorik"

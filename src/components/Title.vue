@@ -1,36 +1,39 @@
 <template>
   <v-container>
-    <v-card class="history-list" outlined>
+    <v-card class="home-card" color="white">
       <v-list-item three-line>
-        <v-list-item-content>
+        <v-list-item-content class="pa-0">
           <v-list-item-title
-            id="heading"
-            class="headline mb-1 display-1 font-weight-thin"
+            class="headline mb-1 display-1 font-weight-thin centered"
           >
-            {{ getShortestPath() }}
+            {{ $t("welcome") }}
           </v-list-item-title>
-          <v-list-item-subtitle class="font-weight-light md-2">
-            This is Ambu-Lenz
+          <v-list-item-subtitle class="font-weight-light md-2 centered px-10">
+            {{ $t("intro") }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-container>
-        <v-row>
-          <v-col>
-            <Card
-              :title="startSim.title"
-              :icon="startSim.icon"
-              :link="startSim.link"
-            />
-          </v-col>
-          <v-col>
-            <Card
-              :title="history.title"
-              :icon="history.icon"
-              :link="history.link"
-            />
-          </v-col>
-        </v-row>
+        <v-list>
+          <v-list-item>
+            <v-list-item-content>
+              <Card
+                :title="startSim.title"
+                :icon="startSim.icon"
+                :link="startSim.link"
+              />
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <Card
+                :title="history.title"
+                :icon="history.icon"
+                :link="history.link"
+              />
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
       </v-container>
     </v-card>
   </v-container>

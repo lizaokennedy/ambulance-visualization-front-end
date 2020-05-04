@@ -1,26 +1,38 @@
 <template>
   <nav>
-    <v-app-bar app
-color="transparent" class=".font-weight-thin" dark flat>
-      <h1 class="display-1 font-weight-thin mb-4">
-        {{ $t("message") }}
+    <v-app-bar
+      app
+      color="primary"
+      class=".font-weight-thin topbar fixed"
+      dark
+      flat
+      clipped-left
+    >
+    <router-link class="link" :to="HomeLink">
+      <v-icon color="accent"> mdi-home </v-icon>
+    </router-link>
+      <v-spacer />
+
+      <h1 class="display-1 font-weight-thin mb-4 whiteText">
+        Ambu-Lenz
       </h1>
       <v-spacer />
 
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn color="transparent"
-flat v-on="on">
+          <v-btn class="font-weight-thin" color="accent" flat v-on="on">
             {{ $i18n.locale }}
           </v-btn>
         </template>
-        <v-list>
+        <v-list class="font-weight-thin" color="accent">
           <v-list-item
             v-for="(item, index) in langs"
             :key="index"
             @click="changeLang(item.short)"
           >
-            <v-list-item-title>{{ item.full }}</v-list-item-title>
+            <v-list-item-subtitle color="primary" class="whiteText">
+              {{ item.full }}
+            </v-list-item-subtitle>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -37,6 +49,7 @@ export default Vue.extend({
   name: "TopBar",
 
   data: () => ({
+    HomeLink: "/" + i18n.locale,
     langs: [
       { short: "en", full: "English" },
       { short: "sv", full: "Swedish" }

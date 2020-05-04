@@ -1,5 +1,6 @@
 {
-  "message": "Welcome to Ambu-Lenz!",
+  "welcome": "Welcome to Ambu-Lenz!",
+  "intro": "Ambu-Lenz is an analytics tool designed to extract data from ambulance response simulations. This data can then provide insights on how to better organize resources for a more efficient emergency response service.",
   "sidebar": {
     "startSimulation": "Start Simulation",
     "showHistory": "Simulation History"

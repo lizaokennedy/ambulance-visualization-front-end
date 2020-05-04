@@ -1,18 +1,20 @@
 <template>
-  <v-card outlined>
-    <v-list-item two-line>
-      <v-list-item-content>
-        <v-container>
-          <v-list-item-title class="headline mb-1 display-1 font-weight-thin">
-            {{ $t(title) }}
-          </v-list-item-title>
-          <router-link :to="link">
-            <v-icon>{{ icon }}</v-icon>
-          </router-link>
-        </v-container>
-      </v-list-item-content>
-    </v-list-item>
-  </v-card>
+  <router-link class="link" :to="link">
+    <v-card color="white" outlined flat>
+      <v-list-item two-line>
+        <v-list-item-content>
+          <v-container>
+            <v-list-item-subtitle dark class="display-1 font-weight-thin">
+              <v-icon color="accent">
+                {{ icon }}
+              </v-icon>
+              {{ $t(title) }}
+            </v-list-item-subtitle>
+          </v-container>
+        </v-list-item-content>
+      </v-list-item>
+    </v-card>
+  </router-link>
 </template>
 
 <script lang="ts">

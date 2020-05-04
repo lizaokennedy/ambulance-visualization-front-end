@@ -1,8 +1,8 @@
 <template>
   <v-app app>
     <TopBar />
-    <SideBar />
     <v-content class="bg">
+      <SideBar />
       <router-view />
     </v-content>
   </v-app>

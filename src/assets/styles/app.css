@@ -3,12 +3,38 @@
 }
 
 .bg{
-    background: rgb(36,228,231);
-    background: linear-gradient(0deg, rgba(36,228,231,1) 0%, rgba(21,137,214,1) 49%, rgba(0,82,144,1) 100%);
+    /* background: rgb(36,228,231);
+    background: linear-gradient(0deg, rgba(36,228,231,1) 0%, rgba(21,137,214,1) 49%, rgba(0,82,144,1) 100%); */
+    /* background: #172A3A; */
+    background: #2C4B61; 
+    /* background: #74B3CE; */
+    /* background: #2C4B61 ; */
+
 }
 
 .icon {
     margin-bottom: 16px;
+}
+
+.whiteText {
+    color: #D8D8D8 !important;
+
+}
+.grayBlue {
+    color: #508991;
+
+}
+.navyText {
+    color: #172A3A;
+
+}
+.greenBlue {
+    color: #004346;
+}
+
+.greenerBlue {
+    color: #09BC8A;
+
 }
 
 .history-list {
@@ -20,9 +46,28 @@
 }
 
 .link {
-    text-decoration: dashed;
+    text-decoration: none;
 }
 
 router-link{
     text-decoration: underline;
+}
+
+.topbar h1{
+    padding: 0;
+    margin-top: 16px;
+    margin-bottom: 0;
+    color: #172A3A;
+}
+
+
+.home-card h1{
+    padding: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+.centered{
+    text-align: center;
 }
