@@ -1,14 +1,13 @@
 <template>
   <div class="analysis">
-    <v-card class="history-list"
-outlined>
+    <v-card class="history-list" outlined>
       <v-list-item three-line>
         <v-list-item-content>
           <v-list-item-title class="headline mb-1 display-1 font-weight-thin">
-            Analysis
+            {{ $t("analysis.title") }}
           </v-list-item-title>
           <v-list-item-subtitle class="font-weight-light md-2">
-            Analysis of data from this Simuations
+            {{ $t("analysis.brief") }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>

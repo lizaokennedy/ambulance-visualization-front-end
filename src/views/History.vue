@@ -1,25 +1,23 @@
 <template>
   <div class="history">
-    <v-card class="history-list"
-outlined>
+    <v-card class="history-list" outlined>
       <v-list-item three-line>
         <v-list-item-content>
           <v-list-item-title class="headline mb-1 display-1 font-weight-thin">
-            History of Simuations
+            {{ $t("history.title") }}
           </v-list-item-title>
           <v-list-item-subtitle class="font-weight-light md-2">
-            All past Simuations with links to their results
+            {{ $t("history.brief") }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-list>
-        <v-list-item v-for="(item, i) in results"
-:key="i">
+        <v-list-item v-for="(item, i) in results" :key="i">
           <v-list-item-content>
             <HistoryItem
               :id="item.id"
-              :start-time="item.startTime"
-              :end-time="item.endTime"
+              :startTime="item.startTime"
+              :endTime="item.endTime"
               :year="item.year"
               :status="item.status"
             />

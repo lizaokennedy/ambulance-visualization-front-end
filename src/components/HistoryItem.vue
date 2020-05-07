@@ -8,10 +8,10 @@
               <v-list-item-title
                 class="headline mb-1 display-1 font-weight-thin"
               >
-                Simulation {{ id }}
+                {{ $t("history.simulation") }} {{ id }}
               </v-list-item-title>
               <v-list-item-subtitle class="font-weight-light md-2">
-                {{ startTime }} - {{ endTime }}
+                {{ $t("history.runningTime", {hours: hours, minutes: minutes})  }}
               </v-list-item-subtitle>
             </v-col>
             <v-col>
@@ -21,16 +21,16 @@
                 {{ year }}
               </v-list-item-title>
               <v-list-item-subtitle class="font-weight-light md-2">
-                {{ status }}
+                {{ $t("history.status") }}: {{status}}
               </v-list-item-subtitle>
             </v-col>
             <v-col>
-              <router-link :to="analysisLink">
+              <router-link class="link" :to="analysisLink">
                 <v-icon class="icon" color="accent">mdi-chart-line</v-icon>
+                <v-list-item-subtitle class="font-weight-light md-2">
+                 {{ $t("history.seeAnalysis")}}
+                </v-list-item-subtitle>
               </router-link>
-              <v-list-item-subtitle class="font-weight-light md-2">
-                See Simulation results
-              </v-list-item-subtitle>
             </v-col>
           </v-row>
         </v-container>
@@ -42,6 +42,7 @@
 <script lang="ts">
 import Vue from "vue";
 import i18n from "../i18n";
+import Simulation from "../models/simulation.model";
 
 export default Vue.extend({
   name: "HistoryItem",
@@ -54,7 +55,7 @@ export default Vue.extend({
     },
     startTime: {
       type: Number,
-      default: 0,
+      default: 3,
       required: true
     },
     endTime: {
@@ -75,6 +76,32 @@ export default Vue.extend({
   },
   data: () => ({
     analysisLink: "/" + i18n.locale + "/analysis"
-  })
+  }),
+  computed: {
+    hours() {
+      let timeTaken = (this.endTime - this.startTime) / 60;
+      if (timeTaken > 60) {
+        let hours = 0;
+        while (timeTaken > 60) {
+          hours++;
+          timeTaken = timeTaken - 60;
+        }
+        return (hours);
+      } else {
+        return 0;
+      }
+    },
+    minutes() {
+      let timeTaken = (this.endTime - this.startTime) / 60;
+      if (timeTaken > 60) {
+        while (timeTaken > 60) {
+          timeTaken = timeTaken - 60;
+        }
+        return (Math.round(timeTaken));
+      } else {
+        return (Math.round(timeTaken));
+      }
+    }
+  }
 });
 </script>

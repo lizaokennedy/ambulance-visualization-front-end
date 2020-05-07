@@ -28,7 +28,7 @@ const DataService = {
         .get("http://127.0.0.1:5000/api/getAllSimulations")
         .then(function(response: AxiosResponse) {
           sims = response.data.sims;
-          // console.log(sims);
+          console.log(sims);
         })
         .catch(function(error: Error) {
           console.log(error);
@@ -46,8 +46,8 @@ const DataService = {
       const s = new Simulation(
         sims[i].Simulation.id,
         sims[i].Simulation.year,
-        sims[i].Simulation.startTime,
-        sims[i].Simulation.endTime,
+        sims[i].Simulation.sim_start,
+        sims[i].Simulation.sim_end,
         sims[i].Simulation.status
       );
       simList.push(s);
