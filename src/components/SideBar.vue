@@ -11,17 +11,29 @@
       app
     >
       <v-list class="display-1 font-weight-thin">
-        <v-list-item v-for="item in sidebarItems" :key="item.title">
+        <v-list-item
+          v-for="item in sidebarItems"
+          :key="item.title"
+        >
           <v-list-item-icon>
-            <router-link class="link" :to="item.link">
-              <v-icon class="icon" color="primary">
+            <router-link
+              class="link"
+              :to="item.link"
+            >
+              <v-icon
+                class="icon"
+                color="primary"
+              >
                 {{ item.icon }}
               </v-icon>
             </router-link>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <router-link class="link" :to="item.link">
+            <router-link
+              class="link"
+              :to="item.link"
+            >
               <v-list-item-subtitle
                 class="font-weight-light"
                 color="accent"
@@ -37,27 +49,27 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import i18n from "../i18n";
+import Vue from 'vue'
+import i18n from '../i18n'
 
 export default Vue.extend({
-  name: "SideBar",
+  name: 'SideBar',
 
   data: () => ({
     sidebar: true,
     sidebarItems: [
       {
-        title: "sidebar.startSimulation",
-        icon: "mdi-play-circle-outline",
-        link: ""
+        title: 'sidebar.startSimulation',
+        icon: 'mdi-play-circle-outline',
+        link: ''
       },
       {
-        title: "sidebar.showHistory",
-        icon: "mdi-history",
-        link: "/" + i18n.locale + "/history"
+        title: 'sidebar.showHistory',
+        icon: 'mdi-history',
+        link: '/' + i18n.locale + '/history'
       }
     ],
     mini: true
   })
-});
+})
 </script>

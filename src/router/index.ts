@@ -1,35 +1,35 @@
-import Vue, { Component } from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import History from "../views/History.vue";
-import Analysis from "../views/Analysis.vue";
-import i18n from "@/i18n";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
+import History from '../views/History.vue'
+import Analysis from '../views/Analysis.vue'
+import i18n from '@/i18n'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     redirect: `/${i18n.locale}`
   },
   {
-    path: "/:lang",
+    path: '/:lang',
     component: Home
   },
   {
-    path: "/:lang/history",
+    path: '/:lang/history',
     component: History
   },
   {
-    path: "/:lang/analysis",
+    path: '/:lang/analysis',
     component: Analysis
   }
-];
+]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
-});
+})
 
-export default router;
+export default router

@@ -1,84 +1,82 @@
-import { AxiosResponse } from "axios";
-import Simulation from "../models/simulation.model";
-const axios = require("axios").default;
+import { AxiosResponse } from 'axios'
+import { Simulation } from '../models/simulation.model'
+const axios = require('axios').default
 
 const DataService = {
-  async getTitle() {
-    let title = "";
+  async getTitle () {
+    let title = ''
     try {
       await axios
-        .get("http://127.0.0.1:5000/api")
-        .then(function(response: AxiosResponse) {
-          title = response.data;
+        .get('http://127.0.0.1:5000/api')
+        .then(function (response: AxiosResponse) {
+          title = response.data
         })
-        .catch(function(error: Error) {
-          console.log(error);
-        });
+        .catch(function (error: Error) {
+          return error
+        })
 
-      return title;
+      return title
     } catch (error) {
-      console.log(error);
+      return error
     }
   },
 
-  async fetchSimulations() {
-    let sims: any = [];
+  async fetchSimulations () {
+    let sims: Simulation[] = []
     try {
       await axios
-        .get("http://127.0.0.1:5000/api/getAllSimulations")
-        .then(function(response: AxiosResponse) {
-          sims = response.data.sims;
-          console.log(sims);
+        .get('http://127.0.0.1:5000/api/getAllSimulations')
+        .then(function (response: AxiosResponse) {
+          sims = response.data.sims
         })
-        .catch(function(error: Error) {
-          console.log(error);
-        });
-      return this.createSimulationList(sims, sims.length);
+        .catch(function (error: Error) {
+          return error
+        })
+      return this.createSimulationList(sims, sims.length)
     } catch (error) {
-      console.log(error);
+      return error
     }
   },
 
-  createSimulationList(sims: any, length: number) {
-    let i;
-    const simList: Simulation[] = [];
+  createSimulationList (sims: Simulation[], length: number) {
+    let i
+    const simList: Simulation[] = []
     for (i = 0; i < length; i++) {
       const s = new Simulation(
-        sims[i].Simulation.id,
-        sims[i].Simulation.year,
-        sims[i].Simulation.sim_start,
-        sims[i].Simulation.sim_end,
-        sims[i].Simulation.status
-      );
-      simList.push(s);
+        sims[i].id,
+        sims[i].year,
+        sims[i].startTime,
+        sims[i].endTime,
+        sims[i].status
+      )
+      simList.push(s)
     }
 
-    return simList;
+    return simList
   },
 
-  async getShortestPath(node1: number, node2: number) {
-    let path: any = "";
+  async getShortestPath (node1: number, node2: number) {
+    let path = ''
     try {
       await axios
-        .get("http://127.0.0.1:5000/api/getShortestPath", {
+        .get('http://127.0.0.1:5000/api/getShortestPath', {
           params: {
-            start: 12345,
-            end: 12346
+            start: node1,
+            end: node2
           }
         })
-        .then(function(response: AxiosResponse) {
-          path = response;
-          console.log(path);
+        .then(function (response: AxiosResponse) {
+          path = response.data
         })
-        .catch(function(error: Error) {
-          console.log(error);
-        });
+        .catch(function (error: Error) {
+          return error
+        })
 
-      return path;
+      return path
     } catch (error) {
-      console.log(error);
+      return error
     }
   }
-};
+}
 
-export default DataService;
+export default DataService

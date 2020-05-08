@@ -8,9 +8,14 @@
       flat
       clipped-left
     >
-    <router-link class="link" :to="HomeLink">
-      <v-icon color="accent"> mdi-home </v-icon>
-    </router-link>
+      <router-link
+        class="link"
+        :to="HomeLink"
+      >
+        <v-icon color="accent">
+          mdi-home
+        </v-icon>
+      </router-link>
       <v-spacer />
 
       <h1 class="display-1 font-weight-thin mb-4 whiteText">
@@ -20,17 +25,28 @@
 
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn class="font-weight-thin" color="accent" flat v-on="on">
+          <v-btn
+            class="font-weight-thin"
+            color="accent"
+            flat
+            v-on="on"
+          >
             {{ $i18n.locale }}
           </v-btn>
         </template>
-        <v-list class="font-weight-thin" color="accent">
+        <v-list
+          class="font-weight-thin"
+          color="accent"
+        >
           <v-list-item
             v-for="(item, index) in langs"
             :key="index"
             @click="changeLang(item.short)"
           >
-            <v-list-item-subtitle color="primary" class="whiteText">
+            <v-list-item-subtitle
+              color="primary"
+              class="whiteText"
+            >
               {{ item.full }}
             </v-list-item-subtitle>
           </v-list-item>
@@ -41,27 +57,27 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import i18n from "../i18n";
-import router from "../router";
+import Vue from 'vue'
+import i18n from '../i18n'
+import router from '../router'
 
 export default Vue.extend({
-  name: "TopBar",
+  name: 'TopBar',
 
   data: () => ({
-    HomeLink: "/" + i18n.locale,
+    HomeLink: '/' + i18n.locale,
     langs: [
-      { short: "en", full: "English" },
-      { short: "sv", full: "Swedish" }
+      { short: 'en', full: 'English' },
+      { short: 'sv', full: 'Swedish' }
     ]
   }),
   methods: {
     changeLang: (lang: string) => {
-      i18n.locale = lang;
+      i18n.locale = lang
       router.push({
         params: { lang: lang }
-      });
+      })
     }
   }
-});
+})
 </script>

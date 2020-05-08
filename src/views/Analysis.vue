@@ -1,6 +1,9 @@
 <template>
   <div class="analysis">
-    <v-card class="history-list" outlined>
+    <v-card
+      class="history-list"
+      outlined
+    >
       <v-list-item three-line>
         <v-list-item-content>
           <v-list-item-title class="headline mb-1 display-1 font-weight-thin">
@@ -12,15 +15,21 @@
         </v-list-item-content>
       </v-list-item>
     </v-card>
+    <v-card>
+      <RandomChart />
+    </v-card>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import RandomChart from '../components/RandomChart.vue'
 
 export default {
-  name: "Analysis",
-  components: {},
+  name: 'Analysis',
+  components: {
+    RandomChart
+  },
   data: () => ({})
-};
+}
 </script>

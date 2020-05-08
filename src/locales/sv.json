@@ -8,7 +8,7 @@
   "history": {
     "title" : "Historik om simuleringar",
     "brief" : "Alla tidigare körda simuleringar listas nedan. Varje objekt kan ses mer djupare genom att gå till sin analyssida.",
-    "runningTime": "Körtid: {hours} timmar och {minutes} minuter",
+    "runningTime": "Körtid: {hours} timmar",
     "status": "Simuleringsstatus",
     "seeAnalysis": "Se simuleringsanalys",
     "simulation": "Simulering"

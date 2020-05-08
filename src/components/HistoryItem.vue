@@ -11,7 +11,9 @@
                 {{ $t("history.simulation") }} {{ id }}
               </v-list-item-title>
               <v-list-item-subtitle class="font-weight-light md-2">
-                {{ $t("history.runningTime", {hours: hours, minutes: minutes})  }}
+                {{
+                  $t("history.runningTime", { hours: hours })
+                }}
               </v-list-item-subtitle>
             </v-col>
             <v-col>
@@ -21,14 +23,22 @@
                 {{ year }}
               </v-list-item-title>
               <v-list-item-subtitle class="font-weight-light md-2">
-                {{ $t("history.status") }}: {{status}}
+                {{ $t("history.status") }}: {{ status }}
               </v-list-item-subtitle>
             </v-col>
             <v-col>
-              <router-link class="link" :to="analysisLink">
-                <v-icon class="icon" color="accent">mdi-chart-line</v-icon>
+              <router-link
+                class="link"
+                :to="analysisLink"
+              >
+                <v-icon
+                  class="icon"
+                  color="accent"
+                >
+                  mdi-chart-line
+                </v-icon>
                 <v-list-item-subtitle class="font-weight-light md-2">
-                 {{ $t("history.seeAnalysis")}}
+                  {{ $t("history.seeAnalysis") }}
                 </v-list-item-subtitle>
               </router-link>
             </v-col>
@@ -40,12 +50,11 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import i18n from "../i18n";
-import Simulation from "../models/simulation.model";
+import Vue from 'vue'
+import i18n from '../i18n'
 
 export default Vue.extend({
-  name: "HistoryItem",
+  name: 'HistoryItem',
   components: {},
   props: {
     id: {
@@ -70,38 +79,32 @@ export default Vue.extend({
     },
     status: {
       type: String,
-      default: "None Found",
+      default: 'None Found',
+      required: true
+    },
+    timeTaken: {
+      type: Number,
+      default: 0,
       required: true
     }
   },
   data: () => ({
-    analysisLink: "/" + i18n.locale + "/analysis"
+    analysisLink: '/' + i18n.locale + '/analysis'
   }),
   computed: {
-    hours() {
-      let timeTaken = (this.endTime - this.startTime) / 60;
-      if (timeTaken > 60) {
-        let hours = 0;
-        while (timeTaken > 60) {
-          hours++;
-          timeTaken = timeTaken - 60;
+    hours () {
+      let timeT = this.timeTaken
+      if (timeT > 60) {
+        let h = 0
+        while (timeT > 60) {
+          h++
+          timeT = timeT - 60
         }
-        return (hours);
+        return h
       } else {
-        return 0;
-      }
-    },
-    minutes() {
-      let timeTaken = (this.endTime - this.startTime) / 60;
-      if (timeTaken > 60) {
-        while (timeTaken > 60) {
-          timeTaken = timeTaken - 60;
-        }
-        return (Math.round(timeTaken));
-      } else {
-        return (Math.round(timeTaken));
+        return 0
       }
     }
   }
-});
+})
 </script>

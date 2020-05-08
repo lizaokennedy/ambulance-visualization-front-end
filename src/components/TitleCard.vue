@@ -1,10 +1,20 @@
 <template>
-  <router-link class="link" :to="link">
-    <v-card color="white" outlined flat>
+  <router-link
+    class="link"
+    :to="link"
+  >
+    <v-card
+      color="white"
+      outlined
+      flat
+    >
       <v-list-item two-line>
         <v-list-item-content>
           <v-container>
-            <v-list-item-subtitle dark class="display-1 font-weight-thin">
+            <v-list-item-subtitle
+              dark
+              class="display-1 font-weight-thin"
+            >
               <v-icon color="accent">
                 {{ icon }}
               </v-icon>
@@ -18,11 +28,10 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import i18n from "../i18n";
+import Vue from 'vue'
 
 export default Vue.extend({
-  name: "TitleCard",
+  name: 'TitleCard',
   components: {},
   props: {
     title: {
@@ -39,5 +48,5 @@ export default Vue.extend({
     }
   },
   data: () => ({})
-});
+})
 </script>

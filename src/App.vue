@@ -9,21 +9,17 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import i18n from "./i18n";
-import Vuetify from "./plugins/vuetify";
-import router from "./router";
-import TopBar from "./components/TopBar.vue";
-import SideBar from "./components/SideBar.vue";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import TopBar from './components/TopBar.vue'
+import SideBar from './components/SideBar.vue'
 export default Vue.extend({
-  name: "App",
+  name: 'App',
   components: {
     TopBar,
     SideBar
   },
-  data() {
-    return {};
+  data () {
+    return {}
   }
-});
+})
 </script>
