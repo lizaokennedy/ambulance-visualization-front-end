@@ -15,21 +15,25 @@
         </v-list-item-content>
       </v-list-item>
     </v-card>
-    <v-card>
-      <RandomChart />
-    </v-card>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import RandomChart from '../components/RandomChart.vue'
+// import Chart from '../components/RandomChart.vue'
+import DataService from '../services/data.service'
 
 export default {
   name: 'Analysis',
   components: {
-    RandomChart
   },
-  data: () => ({})
+  data: () => ({
+    reponsesPerWeek: []
+  }),
+  mounted () {
+    DataService.getResponsesPerWeek().then(response => {
+      this.reponsesPerWeek = response
+    })
+  }
 }
 </script>

@@ -1,13 +1,13 @@
 import { AxiosResponse } from 'axios'
 import { Simulation } from '../models/simulation.model'
 const axios = require('axios').default
-
+const urlBase = 'http://localhost:5000/api/'
 const DataService = {
   async getTitle () {
     let title = ''
     try {
       await axios
-        .get('http://127.0.0.1:5000/api')
+        .get(urlBase)
         .then(function (response: AxiosResponse) {
           title = response.data
         })
@@ -25,7 +25,7 @@ const DataService = {
     let sims: Simulation[] = []
     try {
       await axios
-        .get('http://127.0.0.1:5000/api/getAllSimulations')
+        .get(urlBase + 'getAllSimulations')
         .then(function (response: AxiosResponse) {
           sims = response.data.sims
         })
@@ -59,7 +59,7 @@ const DataService = {
     let path = ''
     try {
       await axios
-        .get('http://127.0.0.1:5000/api/getShortestPath', {
+        .get(urlBase + 'getShortestPath', {
           params: {
             start: node1,
             end: node2
@@ -73,6 +73,23 @@ const DataService = {
         })
 
       return path
+    } catch (error) {
+      return error
+    }
+  },
+
+  async getResponsesPerWeek () {
+    let weeklyCounts = ''
+    try {
+      await axios
+        .get(urlBase + 'getResponseCalls')
+        .then(function (response: AxiosResponse) {
+          weeklyCounts = response.data
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return weeklyCounts
     } catch (error) {
       return error
     }

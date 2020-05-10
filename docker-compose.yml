@@ -1,8 +1,8 @@
-version: "3"
+version: "2"
 
 services:
   webapp:
     container_name: ambu-client
     build: .
     ports: 
-        - "8081:8081"
+        - "8081:8080"
