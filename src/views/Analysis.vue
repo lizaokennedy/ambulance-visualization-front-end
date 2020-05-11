@@ -14,26 +14,38 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+      <LineChart
+        v-if="reponsesPerWeek.length > 0"
+        :chart-data="reponsesPerWeek"
+        :options="chartOptions"
+        label="Responses Per Week"
+      />
     </v-card>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import Chart from '../components/RandomChart.vue'
+import LineChart from '../components/LineChart.vue'
 import DataService from '../services/data.service'
 
 export default {
   name: 'Analysis',
   components: {
+    LineChart
   },
   data: () => ({
-    reponsesPerWeek: []
+    reponsesPerWeek: [],
+    chartOptions: {
+      responsive: true,
+      maintainAspectRation: false
+    }
   }),
-  mounted () {
-    DataService.getResponsesPerWeek().then(response => {
-      this.reponsesPerWeek = response
+  async beforeCreate () {
+    const data = await DataService.getResponsesPerWeek().then(response => {
+      return response
     })
+    this.reponsesPerWeek = data
   }
 }
 </script>
