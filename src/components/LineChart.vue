@@ -20,8 +20,7 @@ export default {
   data: () => ({
     gradient: ''
   }),
-  computed: {
-  },
+  computed: {},
   mounted () {
     const weeks = [
       1,

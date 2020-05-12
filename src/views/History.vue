@@ -14,24 +14,24 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in results"
-          :key="i"
-        >
-          <v-list-item-content>
-            <HistoryItem
-              :id="item.id"
-              :start-time="item.startTime"
-              :end-time="item.endTime"
-              :year="item.year"
-              :status="item.status"
-              :time-taken="item.getTimeTaken()"
-            />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
     </v-card>
+    <v-list class="ma-7">
+      <v-list-item
+        v-for="(item, i) in results"
+        :key="i"
+      >
+        <v-list-item-content>
+          <HistoryItem
+            :id="item.id"
+            :start-time="item.startTime"
+            :end-time="item.endTime"
+            :year="item.year"
+            :status="item.status"
+            :time-taken="item.getTimeTaken()"
+          />
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
   </div>
 </template>
 

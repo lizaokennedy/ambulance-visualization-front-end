@@ -93,6 +93,39 @@ const DataService = {
     } catch (error) {
       return error
     }
+  },
+  async getTotalResponses () {
+    let total = 0
+    try {
+      await axios
+        .get(urlBase + 'getNumResponses')
+        .then(function (response: AxiosResponse) {
+          total = response.data
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return total
+    } catch (error) {
+      return error
+    }
+  },
+
+  async getTotalTransfers () {
+    let total = 0
+    try {
+      await axios
+        .get(urlBase + 'getNumTransfers')
+        .then(function (response: AxiosResponse) {
+          total = response.data
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return total
+    } catch (error) {
+      return error
+    }
   }
 }
 
