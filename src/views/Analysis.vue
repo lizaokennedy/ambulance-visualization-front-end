@@ -4,7 +4,7 @@
       class="history-list"
       outlined
     >
-      <v-list-item three-line>
+      <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="headline mb-1 display-1 font-weight-thin">
             {{ $t("analysis.title") }}
@@ -14,12 +14,25 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-      <LineChart
-        v-if="reponsesPerWeek.length > 0"
-        :chart-data="reponsesPerWeek"
-        :options="chartOptions"
-        label="Responses Per Week"
-      />
+      <div class="d-flex">
+        <v-card
+          class="ma-6 flex-column"
+          color="primary"
+          height="20rem"
+          width="40rem"
+        >
+          <v-card-title class="mb-1 font-weight-thin whiteText">
+            Number of responses per week
+          </v-card-title>
+          <LineChart
+            v-if="reponsesPerWeek.length > 0"
+            :chart-data="reponsesPerWeek"
+            :options="chartOptions"
+            label="Responses Per Week"
+            :height="150"
+          />
+        </v-card>
+      </div>
     </v-card>
   </div>
 </template>
@@ -38,7 +51,30 @@ export default {
     reponsesPerWeek: [],
     chartOptions: {
       responsive: true,
-      maintainAspectRation: false
+      maintainAspectRation: false,
+      scaleFontColor: 'secondary',
+      legend: {
+        labels: {
+          // This more specific font property overrides the global property
+          fontColor: '#AAAAAA'
+        }
+      },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              fontColor: '#AAAAAA'
+            }
+          }
+        ],
+        xAxes: [
+          {
+            ticks: {
+              fontColor: '#AAAAAA'
+            }
+          }
+        ]
+      }
     }
   }),
   async beforeCreate () {
