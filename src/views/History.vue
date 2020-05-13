@@ -23,11 +23,10 @@
         <v-list-item-content>
           <HistoryItem
             :id="item.id"
-            :start-time="item.startTime"
-            :end-time="item.endTime"
+            :start-time="item.sim_start"
+            :end-time="item.sim_end"
             :year="item.year"
             :status="item.status"
-            :time-taken="item.getTimeTaken()"
           />
         </v-list-item-content>
       </v-list-item>

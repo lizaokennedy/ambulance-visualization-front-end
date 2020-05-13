@@ -8,13 +8,20 @@
   "history": {
     "title" : "History of Simulations",
     "brief" : "All previously run simulations are listed below. Each item can be viewed more in depth by going to its analysis page.",
-    "runningTime": "Running time: {hours} hours",
+    "runningTime": "Running time: {hours} hours and {minutes} minutes",
     "status": "Simulation Status",
     "seeAnalysis": "See simulation analysis",
     "simulation": "Simulation"
   },
   "analysis": {
     "title" : "Analysis of Simulation",
-    "brief" : "In depth analysis of this simulation is shown below"
+    "brief" : "In depth analysis of this simulation is shown below",
+    "data" : {
+      "tResponses" : "Total Responses",
+      "ptransfers" : "Persentage Transfered to Hospitals",
+      "aResponseTime" : "Average Response Time",
+      "minutes" : "minutes",
+      "RPerWeek" : "Number of responses per week"
+    }
   }
 }

@@ -35,7 +35,7 @@
               :to="item.link"
             >
               <v-list-item-subtitle
-                class="font-weight-light"
+                class="font-weight-light mb-3"
                 color="accent"
               >
                 {{ $t(item.title) }}

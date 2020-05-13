@@ -8,13 +8,20 @@
   "history": {
     "title" : "Historik om simuleringar",
     "brief" : "Alla tidigare körda simuleringar listas nedan. Varje objekt kan ses mer djupare genom att gå till sin analyssida.",
-    "runningTime": "Körtid: {hours} timmar un {minutes} minuter",
+    "runningTime": "Körtid: {hours} timmar och {minutes} minuter",
     "status": "Simuleringsstatus",
     "seeAnalysis": "Se simuleringsanalys",
     "simulation": "Simulering"
   },
   "analysis": {
     "title" : "Analys av simulering",
-    "brief" : "En djup analys av denna simulering visas nedan"
+    "brief" : "En djup analys av denna simulering visas nedan",
+    "data" : {
+      "tResponses" : "Totala svar",
+      "ptransfers" : " Persentage överförs till sjukhus",
+      "aResponseTime" : " Genomsnittlig responstid",
+      "minutes" : "minuter",
+      "RPerWeek" : "Antal svar per vecka"
+    }
   }
 }

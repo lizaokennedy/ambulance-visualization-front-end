@@ -45,13 +45,12 @@ const DataService = {
       const s = new Simulation(
         sims[i].id,
         sims[i].year,
-        sims[i].startTime,
-        sims[i].endTime,
+        sims[i].sim_end,
+        sims[i].sim_start,
         sims[i].status
       )
       simList.push(s)
     }
-
     return simList
   },
 
@@ -123,6 +122,22 @@ const DataService = {
           return error
         })
       return total
+    } catch (error) {
+      return error
+    }
+  },
+  async getAvgResponseTime () {
+    let time = 0
+    try {
+      await axios
+        .get(urlBase + 'getAvgResponseTime')
+        .then(function (response: AxiosResponse) {
+          time = response.data
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return time
     } catch (error) {
       return error
     }

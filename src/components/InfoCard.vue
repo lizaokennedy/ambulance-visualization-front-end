@@ -31,17 +31,3 @@ export default {
 </script>
 
 <style></style>
-// <v-container>
-//       <v-row>
-//         <v-col>
-//           <v-card-text class="font-weight-light pa-0">
-//             {{ title }}
-//           </v-card-text>
-//         </v-col>
-//         <v-col>
-//           <v-card-text class="font-weight-light pa-0">
-//             {{ data }}
-//           </v-card-text>
-//         </v-col>
-//       </v-row>
-//     </v-container>

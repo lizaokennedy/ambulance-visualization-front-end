@@ -21,20 +21,20 @@
     <div class="d-flex flex-column flex-wrap mx-8">
       <div class=" d-flex flex-wrap my-2">
         <InfoCard
-          title="Total Responses"
+          :title="$t('analysis.data.tResponses')"
           :data="numResponses"
           class="flex-grow-1"
           :color="color1"
         />
         <InfoCard
-          title="Persentage Transfered to Hospitals"
+          :title="$t('analysis.data.ptransfers')"
           :data="numTransfers"
           class="flex-grow-1 mx-2"
           :color="color2"
         />
         <InfoCard
-          title="Average Response Time"
-          :data="numResponses"
+          :title="$t('analysis.data.aResponseTime')"
+          :data="avgResponseTime + ' '+ $t('analysis.data.minutes')"
           class="flex-grow-1"
           :color="color3"
         />
@@ -44,7 +44,7 @@
         max-height="15em"
       >
         <v-card-subtitle class="mb-1 headline pa-1 pt-2 font-weight-light text-center">
-          Number of responses per week
+          {{ $t('analysis.data.RPerWeek') }}
         </v-card-subtitle>
         <LineChart
           v-if="reponsesPerWeek.length > 0"
@@ -74,6 +74,7 @@ export default {
     reponsesPerWeek: [],
     numResponses: 0,
     numTransfers: 0,
+    avgResponseTime: 0,
     LineChartOptions: {
       responsive: true,
       maintainAspectRatio: false,
@@ -122,6 +123,11 @@ export default {
     const numtransfers = await DataService.getTotalTransfers().then(response => {
       return response
     })
+    const avgResTime = await DataService.getAvgResponseTime().then(response => {
+      return response
+    })
+
+    this.avgResponseTime = avgResTime
     this.numTransfers = Math.round((numtransfers / numresponses) * 100) + '%'
     this.numResponses = numresponses
     this.reponsesPerWeek = responses
