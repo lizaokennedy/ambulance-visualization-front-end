@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios'
 import { Simulation } from '../models/simulation.model'
 const axios = require('axios').default
-const urlBase = 'http://localhost:5000/api/'
+const urlBase = 'http://0.0.0.0:5000/api/'
 const DataService = {
   async getTitle () {
     let title = ''

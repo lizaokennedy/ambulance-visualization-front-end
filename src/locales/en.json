@@ -18,7 +18,7 @@
     "brief" : "In depth analysis of this simulation is shown below",
     "data" : {
       "tResponses" : "Total Responses",
-      "ptransfers" : "Persentage Transfered to Hospitals",
+      "ptransfers" : "Percentage Transfered to Hospitals",
       "aResponseTime" : "Average Response Time",
       "minutes" : "minutes",
       "RPerWeek" : "Number of responses per week"
