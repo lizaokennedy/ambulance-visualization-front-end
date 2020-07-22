@@ -37,7 +37,7 @@
 
 }
 
-.history-list {
+.border {
     margin: 16px 32px;
 }
 
@@ -70,4 +70,25 @@ router-link{
 
 .centered{
     text-align: center;
+    align-self: center;
+    align-content: center;
+}
+
+.ColDisplay{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.ColDisplayElem{
+    flex: 1 1 150px;
+}
+
+.ColDisplayElemNS{
+    flex: 0 1 150px;
+}
+
+.setSize{
+    min-height: 400px;
+    font-size: 11pt;
 }

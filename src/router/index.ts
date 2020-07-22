@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import History from '../views/History.vue'
+import Simulation from '../views/Simulation.vue'
 import Analysis from '../views/Analysis.vue'
 import i18n from '@/i18n'
 
@@ -23,6 +24,10 @@ const routes = [
   {
     path: '/:lang/analysis',
     component: Analysis
+  },
+  {
+    path: '/:lang/simulation',
+    component: Simulation
   }
 ]
 

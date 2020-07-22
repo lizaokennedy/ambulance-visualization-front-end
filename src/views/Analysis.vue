@@ -4,7 +4,7 @@
     fill-height
   >
     <v-card
-      class="history-list"
+      class="border"
       outlined
     >
       <v-list-item>

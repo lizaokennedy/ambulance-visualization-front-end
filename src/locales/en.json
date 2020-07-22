@@ -23,5 +23,15 @@
       "minutes" : "minutes",
       "RPerWeek" : "Number of responses per week"
     }
+  },
+  "sim": {
+    "title" : "Simulation Creator",
+    "brief" : "Create and run simulations",
+    "createSim": {
+      "title": "Create New Simulation",
+      "emergency": "Emergencies",
+      "depot": "Depots",
+      "run": "Run Simulation"
+    }
   }
 }

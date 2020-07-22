@@ -68,7 +68,7 @@ export default Vue.extend({
     HomeLink: '/' + i18n.locale,
     langs: [
       { short: 'en', full: 'English' },
-      { short: 'sv', full: 'Swedish' }
+      { short: 'af', full: 'Afrikaans' }
     ]
   }),
   methods: {

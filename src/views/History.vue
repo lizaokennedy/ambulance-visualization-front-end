@@ -1,7 +1,7 @@
 <template>
   <div class="history">
     <v-card
-      class="history-list"
+      class="border"
       outlined
     >
       <v-list-item three-line>

@@ -61,7 +61,7 @@ export default Vue.extend({
       {
         title: 'sidebar.startSimulation',
         icon: 'mdi-play-circle-outline',
-        link: ''
+        link: '/' + i18n.locale + '/simulation'
       },
       {
         title: 'sidebar.showHistory',

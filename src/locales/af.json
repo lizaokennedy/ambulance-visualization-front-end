@@ -1,0 +1,37 @@
+{
+  "welcome": "Welkom by Ambu-Lenz!",
+   "intro": "Ambu-Lenz is 'n analitiese hulpmiddel wat ontwerp is om data uit simulasies vir ambulansrespons te onttrek. Hierdie gegewens kan dan insigte bied oor hoe om bronne beter te organiseer vir 'n doeltreffender noodreaksiediens.",  
+   "sidebar": {
+    "startSimulation": "Begin Simulasie",
+    "showHistory": "Simulasie Geskiedenis"
+  },
+  "history": {
+    "title" : "Geskiedenis van Simulasies",
+    "brief" : "Alle simulasies wat voorheen uitgevoer is, word hieronder gelys. Elke item is op analise bladsy in meer diepte geanaliseer.",
+    "runningTime": "Looptyd: {hours} ure en {minutes} minute",
+    "status": "Simulasie Status",
+    "seeAnalysis": "Kyk na simulasie-analise",
+    "simulation": "Simulasie"
+  },
+  "analysis": {
+    "title" : "Analise van Simulasie",
+    "brief" : "'n Diepte-analise van hierdie simulasie word hieronder getoon",
+    "data" : {
+      "tResponses" : "Totale reaksies",
+      "ptransfers" : "Persentasie oorgedra na hospitale",
+      "aResponseTime" : "Gemiddelde responstyd",
+      "minutes" : "minute",
+      "RPerWeek" : "Aantal reaksies per week"
+    }
+  },
+  "sim": {
+    "title" : "Simulasie Skepper",
+    "brief" : "Skep en voer simulasies uit",
+    "createSim": {
+      "title": "Skep nuwe simulasie",
+      "emergency": "Noodgevalle",
+      "depot": "Depots",
+      "run": "Begin Simulasie"
+    }
+  }
+}
