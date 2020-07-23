@@ -18,68 +18,32 @@
             class="setSize font-weight-thin ColDisplayElem"
           >
             <MglMarker
-              :coordinates="coordinates"
+              v-for="depot in depots"
+              :key="depot.id"
+              :coordinates="depot.coordinate"
               draggable="true"
               color="#172A3A"
             >
               <MglPopup>
                 <div>
                   <v-card-subtitle class="pa-2">
-                    Depot# 23467
+                    Depot ID: {{ depot.id }}
                   </v-card-subtitle>
                   <v-text-field
                     v-model="first"
                     label="Ambulances"
-                    placeholder="3"
+                    :placeholder="depot.ambulances"
                     outlined
                     append-icon="mdi-ambulance"
                     color="accent"
                     class="pa-0 ma-0"
                   />
-                </div>
-              </MglPopup>
-            </MglMarker>
-            <MglMarker
-              :coordinates="coordinates"
-              draggable="true"
-              color="#172A3A"
-            >
-              <MglPopup>
-                <div>
-                  <v-card-subtitle class="pa-2">
-                    Depot# 23467
-                  </v-card-subtitle>
-                  <v-text-field
-                    v-model="first"
-                    label="Ambulances"
-                    placeholder="3"
-                    outlined
-                    append-icon="mdi-ambulance"
+                  <v-btn
                     color="accent"
-                    class="pa-0 ma-0"
-                  />
-                </div>
-              </MglPopup>
-            </MglMarker>
-            <MglMarker
-              :coordinates="coordinates"
-              draggable="true"
-              color="#172A3A"
-            >
-              <MglPopup>
-                <div>
-                  <v-card-subtitle class="pa-2">
-                    Depot# 23467
-                  </v-card-subtitle>
-                  <v-text-field
-                    v-model="first"
-                    label="Ambulances"
-                    placeholder="3"
-                    outlined
-                    append-icon="mdi-ambulance"
-                    color="accent"
-                    class="pa-0 ma-0"
-                  />
+                    width="100%"
+                  >
+                    Save Changes
+                  </v-btn>
                 </div>
               </MglPopup>
             </MglMarker>
@@ -107,7 +71,11 @@ export default {
         'pk.eyJ1IjoibGl6YW9rZW5uZWR5IiwiYSI6ImNrY3Z0ZDB0cDA3aXcycW1zNW00Nmx2aTEifQ.-DZwZVyLVc1Z0m4U9KM_Pw', // your access token. Needed if you using Mapbox maps
       mapStyle: 'mapbox://styles/lizaokennedy/ckcvtmhe90s9q1iqy33gxp0ld', // your map style
       areaName: 'Cape Town',
+      depots: [{ id: 12, coordinate: [18.504812, -33.817307], ambulances: 5 },
+        { id: 12, coordinate: [18.494672, -33.805127], ambulances: 5 },
+        { id: 12, coordinate: [18.486162, -33.814518], ambulances: 5 }],
       coordinates: [18.470741, -33.864481]
+
     }
   },
 
