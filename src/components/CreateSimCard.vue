@@ -9,6 +9,13 @@
         @click="runSimulation()"
       >
         {{ runBtnText }}
+        <v-progress-linear
+          :active="loading"
+          :indeterminate="loading"
+          absolute
+          bottom
+          color="grey"
+        />
       </v-btn>
     </v-card-text>
   </v-card>
@@ -18,25 +25,27 @@ import DataService from '../services/data.service'
 
 export default {
   data () {
-    return {
-      clicked: false,
-      running: false,
-      saving: false,
-      saveLoaded: false
-    }
+    return {}
   },
   computed: {
     runBtnText () {
-      if (this.running === true) {
+      if (this.$store.state.running === true) {
         return 'Running Simulation...'
       } else {
         return 'Run Simulation'
       }
     },
     runSimDisabled () {
-      if (!this.saveLoaded) {
+      if (!this.$store.state.saveLoaded) {
         return true
-      } else if (this.running) {
+      } else if (this.$store.state.running) {
+        return true
+      } else {
+        return false
+      }
+    },
+    loading () {
+      if (this.$store.state.running) {
         return true
       } else {
         return false
@@ -45,11 +54,9 @@ export default {
   },
   methods: {
     async runSimulation () {
-      this.running = true
+      this.$store.commit('runSimulation')
       await DataService.runSimulation().then(response => {
-        console.log(response)
-        this.running = false
-        this.saveLoaded = false
+        this.$store.commit('finishedRunning', response)
         return response
       })
     }

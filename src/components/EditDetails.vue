@@ -5,17 +5,17 @@
     </v-card-title>
     <v-container class="mt-5">
       <v-text-field
-        v-model="first"
+        v-model="runTime"
         label="Simulation Running Time"
-        placeholder="5000"
+        :placeholder="runTime"
         append-icon="mdi-clock-time-four-outline"
         outlined
         color="accent"
       />
       <v-text-field
-        v-model="first"
+        v-model="avgEmergencies"
         label="Avg Number of Emergencies Per Day"
-        placeholder="83"
+        :placeholder="avgEmergencies"
         outlined
         append-icon="mdi-ambulance"
         color="accent"
@@ -24,18 +24,17 @@
         class="headline centered font-weight-light whiteText mb-2 mr-2"
         color="accent"
         width="100%"
-      >
-        Edit Depots
-      </v-btn>
-      <v-btn
-        class="headline centered font-weight-light whiteText mb-2 mr-2"
-        color="accent"
-        width="100%"
-
-        :disabled="saving"
+        :disabled="btnDisabled"
         @click="saveSettings()"
       >
         {{ saveBtnText }}
+        <v-progress-linear
+          :active="loading"
+          :indeterminate="loading"
+          absolute
+          bottom
+          color="grey"
+        />
       </v-btn>
     </v-container>
   </v-card>
@@ -49,26 +48,43 @@ export default {
   data () {
     return {
       saving: false,
-      saveLoaded: false
+      saveLoaded: false,
+      runTime: 1000,
+      avgEmergencies: 83
     }
   },
   computed: {
     saveBtnText () {
-      if (this.saving === true) {
+      if (this.$store.state.saving === true) {
         return 'Saving...'
       } else {
         return 'Save Settings'
       }
+    },
+    btnDisabled () {
+      if (this.$store.state.running || this.$store.state.saving) {
+        return true
+      } else {
+        return false
+      }
+    },
+    loading () {
+      if (this.$store.state.saving) {
+        return true
+      } else {
+        return false
+      }
     }
+  },
+  created () {
+    this.map = null
   },
   methods: {
     async saveSettings () {
-      this.saving = true
-      // TODO parse uploaded files through as jsons
-      await DataService.saveSettings().then(response => {
+      this.$store.commit('saveInfo')
+      await DataService.saveSettings(this.runTime, this.avgEmergencies, this.$store.state.depots).then((response) => {
         console.log(response)
-        this.saving = false
-        this.saveLoaded = true
+        this.$store.commit('saveLoaded')
       })
     }
   }

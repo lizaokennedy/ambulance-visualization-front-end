@@ -22,7 +22,8 @@ const routes = [
     component: History
   },
   {
-    path: '/:lang/analysis',
+    name: 'Analysis',
+    path: '/:lang/analysis/:id',
     component: Analysis
   },
   {

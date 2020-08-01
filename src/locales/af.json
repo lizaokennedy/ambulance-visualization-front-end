@@ -18,7 +18,7 @@
     "brief" : "'n Diepte-analise van hierdie simulasie word hieronder getoon",
     "data" : {
       "tResponses" : "Totale reaksies",
-      "ptransfers" : "Persentasie oorgedra na hospitale",
+      "ptransfers" : "Gemiddelde afstand",
       "aResponseTime" : "Gemiddelde responstyd",
       "minutes" : "minute",
       "RPerWeek" : "Aantal reaksies per week"

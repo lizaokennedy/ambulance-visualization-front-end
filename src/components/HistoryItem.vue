@@ -1,9 +1,11 @@
 <template>
-  <v-list-item two-line>
+  <v-list-item
+    two-line
+  >
     <v-list-item-content>
       <router-link
         class="link"
-        :to="analysisLink"
+        :to="{name: 'Analysis', params: {id: id }}"
       >
         <v-container class="pa-0 ma-1">
           <v-row>
@@ -30,7 +32,7 @@
             <v-col>
               <router-link
                 class="link"
-                :to="analysisLink"
+                :to="{name: 'Analysis', params: {id: id }}"
               >
                 <v-icon
                   class="icon pt-2 mb-0"

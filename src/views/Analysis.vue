@@ -28,7 +28,7 @@
         />
         <InfoCard
           :title="$t('analysis.data.ptransfers')"
-          :data="numTransfers"
+          :data="avgDist + ' km'"
           class="flex-grow-1 mx-2"
           :color="color2"
         />
@@ -39,7 +39,7 @@
           :color="color3"
         />
       </div>
-      <v-card
+      <!-- <v-card
         class="flex-grow-1 mt-2"
         max-height="15em"
       >
@@ -53,22 +53,28 @@
           label="Responses Per Week"
           height="120%"
         />
-      </v-card>
+      </v-card> -->
+      <div class="ColDisplay">
+        <Heatmap class="ColDisplayElem mr-2" />
+        <Heatmap class="ColDisplayElem ml-2" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import LineChart from '../components/LineChart.vue'
+// import LineChart from '../components/LineChart.vue'
 import InfoCard from '../components/InfoCard.vue'
 import DataService from '../services/data.service'
+import Heatmap from '../components/Heatmap.vue'
 
 export default {
   name: 'Analysis',
   components: {
-    LineChart,
-    InfoCard
+    // LineChart,
+    InfoCard,
+    Heatmap
   },
   data: () => ({
     reponsesPerWeek: [],
@@ -112,7 +118,8 @@ export default {
     color3: 'coralText'
   }),
   async beforeCreate () {
-    const numresponses = await DataService.getTotalResponses().then(
+    const simID = this.$route.params.id
+    const numresponses = await DataService.getTotalResponses(simID).then(
       response => {
         return response
       }
@@ -120,15 +127,15 @@ export default {
     const responses = await DataService.getResponsesPerWeek().then(response => {
       return response
     })
-    const numtransfers = await DataService.getTotalTransfers().then(response => {
+    const avgDist = await DataService.getAvgDistance(simID).then(response => {
       return response
     })
-    const avgResTime = await DataService.getAvgResponseTime().then(response => {
+    const avgResTime = await DataService.getAvgResponseTime(simID).then(response => {
       return response
     })
 
-    this.avgResponseTime = avgResTime
-    this.numTransfers = Math.round((numtransfers / numresponses) * 100) + '%'
+    this.avgResponseTime = parseFloat(avgResTime).toFixed(3)
+    this.avgDist = parseFloat(avgDist).toFixed(3)
     this.numResponses = numresponses
     this.reponsesPerWeek = responses
   }
