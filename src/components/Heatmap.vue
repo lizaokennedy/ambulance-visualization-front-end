@@ -103,9 +103,6 @@ export default {
         })
       }
     })
-
-    console.log(this.map)
-    console.log(this.deck)
   },
   methods: {
   }

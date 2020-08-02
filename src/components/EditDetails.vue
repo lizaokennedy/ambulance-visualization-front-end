@@ -4,10 +4,11 @@
       Edit Simulation Details
     </v-card-title>
     <v-container class="mt-5">
-      <v-text-field
+      <v-combobox
         v-model="runTime"
-        label="Simulation Running Time"
-        :placeholder="runTime"
+        label="Simulation Running Time (seconds)"
+        :items="Object.keys(times)"
+        :placeholder="runtime"
         append-icon="mdi-clock-time-four-outline"
         outlined
         color="accent"
@@ -49,8 +50,9 @@ export default {
     return {
       saving: false,
       saveLoaded: false,
-      runTime: 1000,
-      avgEmergencies: 83
+      runTime: 1500,
+      avgEmergencies: 83,
+      times: { '1 hour': 3600, '5 hours': 18000, '12 hours': 43200, '1 day': 86400, '4 days': 345600, '1 week': 604800 }
     }
   },
   computed: {
@@ -82,6 +84,11 @@ export default {
   methods: {
     async saveSettings () {
       this.$store.commit('saveInfo')
+      if (this.runTime in this.times) {
+        this.runTime = this.times[this.runTime]
+      }
+
+      // check that depot info has been saved... maybe
       await DataService.saveSettings(this.runTime, this.avgEmergencies, this.$store.state.depots).then((response) => {
         console.log(response)
         this.$store.commit('saveLoaded')

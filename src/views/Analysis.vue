@@ -34,7 +34,7 @@
         />
         <InfoCard
           :title="$t('analysis.data.aResponseTime')"
-          :data="avgResponseTime + ' '+ $t('analysis.data.minutes')"
+          :data="getAvgResponseTime()"
           class="flex-grow-1"
           :color="color3"
         />
@@ -135,9 +135,22 @@ export default {
     })
 
     this.avgResponseTime = parseFloat(avgResTime).toFixed(3)
-    this.avgDist = parseFloat(avgDist).toFixed(3)
+    this.avgDist = parseFloat(avgDist).toFixed(2)
     this.numResponses = numresponses
     this.reponsesPerWeek = responses
+  },
+  methods: {
+    getAvgResponseTime () {
+      const d = this.avgResponseTime * 60
+      const h = Math.floor(d / 3600)
+      const m = Math.floor(d % 3600 / 60)
+      const s = Math.floor(d % 3600 % 60)
+
+      const hDisplay = h > 0 ? h + 'h ' : ''
+      const mDisplay = m > 0 ? m + 'm ' : ''
+      const sDisplay = s > 0 ? s + 's ' : ''
+      return hDisplay + mDisplay + sDisplay
+    }
   }
 }
 </script>

@@ -13,7 +13,8 @@ export default new Vuex.Store({
     draggable: false,
     simulationID: 24,
     simCompletePopup: false,
-    depots: []
+    depots: [{}],
+    newDepotPopup: false
   },
   mutations: {
     saveInfo (state) {
@@ -44,9 +45,20 @@ export default new Vuex.Store({
     },
     saveDepots (state, payload) {
       state.depots = payload
+      console.log(state.depots)
     },
     closePopup (state) {
       state.simCompletePopup = false
+    },
+    closeDepotPopup (state) {
+      state.newDepotPopup = false
+    },
+    showDepotPopup (state) {
+      state.newDepotPopup = true
+    },
+    addDepot (state, payload) {
+      state.depots.push(payload)
+      console.log(state.depots)
     }
   },
   actions: {},

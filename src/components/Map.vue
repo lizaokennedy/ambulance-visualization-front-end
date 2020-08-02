@@ -8,14 +8,14 @@
         height="100%"
         width="100%"
       >
-        <div class="ColDisplay">
+        <div>
           <MglMap
             :access-token="accessToken"
             :map-style="mapStyle"
             :mapbox-gl="mapbox - gl"
             :center="coordinates"
             zoom="9"
-            class="setSize font-weight-thin ColDisplayElem"
+            class="setSize font-weight-thin"
           >
             <MglMarker
               v-for="depot in depots"
@@ -40,22 +40,39 @@
                     color="accent"
                     class="pa-0 ma-0"
                   />
+                  <v-btn @click="removeDepot($event,depot)">
+                    Delete Depot
+                  </v-btn>
                 </div>
               </MglPopup>
             </MglMarker>
           </MglMap>
-          <v-btn
-            class="headline centered font-weight-light whiteText mt-2 mb-2 mr-2"
-            color="accent"
-            width="100%"
-            :disabled="btnDisabled"
-            @click="editDepots()"
-          >
-            {{ this.$store.state.editDepots }}
-          </v-btn>
+          <v-spacer />
+          <div class="ColDisplay">
+            <v-btn
+              class="headline centered font-weight-light whiteText mt-2 mb-2 mr-2 ColDisplayElem"
+              color="accent"
+              width="100%"
+              :disabled="btnDisabled"
+              :hidden="hideAddDepotButton()"
+              @click="showPopup()"
+            >
+              Add New Depot
+            </v-btn>
+            <v-btn
+              class="headline centered font-weight-light whiteText mt-2 mb-2 mr-2 ColDisplayElem"
+              color="accent"
+              width="100%"
+              :disabled="btnDisabled"
+              @click="editDepots()"
+            >
+              {{ this.$store.state.editDepots }}
+            </v-btn>
+          </div>
         </div>
       </v-list-item-content>
     </v-list-item>
+    <DepotPopup />
   </v-card>
 </template>
 
@@ -63,12 +80,14 @@
 import Mapbox from 'mapbox-gl'
 import { MglMap, MglPopup, MglMarker } from 'vue-mapbox'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import DepotPopup from '../components/NewDepotPopup.vue'
 
 export default {
   components: {
     MglMap,
     MglMarker,
-    MglPopup
+    MglPopup,
+    DepotPopup
   },
   data () {
     return {
@@ -105,9 +124,15 @@ export default {
   },
   methods: {
     saveLongLat (event, depot) {
-      console.log(event.marker._lngLat.lat)
-      this.depots[depot.id].coordinate[0] = event.marker._lngLat.lat
-      this.depots[depot.id].coordinate[1] = event.marker._lngLat.lng
+      this.depots[depot.id].coordinate[1] = event.marker._lngLat.lat
+      this.depots[depot.id].coordinate[0] = event.marker._lngLat.lng
+      console.log(this.depots)
+    },
+    removeDepot (event, depot) {
+      const index = this.depots.indexOf(depot)
+      if (index > -1) {
+        this.depots.splice(index, 1)
+      }
     },
     saveNumAmbu (num, depot) {
       console.log(num, depot.id)
@@ -121,7 +146,18 @@ export default {
         this.$store.commit('saveDepots', this.depots)
         this.$store.commit('finishedEditingDepots')
       }
+    },
+    hideAddDepotButton () {
+      if (this.$store.state.editing === false) {
+        return true
+      } else {
+        return false
+      }
+    },
+    showPopup () {
+      this.$store.commit('showDepotPopup')
     }
+
   }
 }
 </script>
