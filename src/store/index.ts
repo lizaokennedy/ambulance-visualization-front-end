@@ -12,6 +12,7 @@ export default new Vuex.Store({
     editing: false,
     draggable: false,
     simulationID: 24,
+    runSuccess: true,
     simCompletePopup: false,
     depots: [{}],
     newDepotPopup: false
@@ -29,7 +30,8 @@ export default new Vuex.Store({
     },
     finishedRunning (state, payload) {
       state.simCompletePopup = true
-      state.simulationID = payload
+      state.simulationID = payload[0]
+      state.runSuccess = payload[1]
       state.saveLoaded = false
       state.running = false
     },

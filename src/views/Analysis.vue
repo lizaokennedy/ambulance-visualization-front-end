@@ -56,7 +56,6 @@
       </v-card> -->
       <div class="ColDisplay">
         <Heatmap class="ColDisplayElem mr-2" />
-        <Heatmap class="ColDisplayElem ml-2" />
       </div>
     </div>
   </div>
@@ -124,9 +123,9 @@ export default {
         return response
       }
     )
-    const responses = await DataService.getResponsesPerWeek().then(response => {
-      return response
-    })
+    // const responses = await DataService.getResponsesPerWeek().then(response => {
+    //   return response
+    // })
     const avgDist = await DataService.getAvgDistance(simID).then(response => {
       return response
     })
@@ -137,7 +136,7 @@ export default {
     this.avgResponseTime = parseFloat(avgResTime).toFixed(3)
     this.avgDist = parseFloat(avgDist).toFixed(2)
     this.numResponses = numresponses
-    this.reponsesPerWeek = responses
+    // this.reponsesPerWeek = responses
   },
   methods: {
     getAvgResponseTime () {

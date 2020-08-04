@@ -12,8 +12,11 @@
         <v-card-text>
           Simulation ID: {{ this.$store.state.simulationID }}
         </v-card-text>
-        <v-card-text>
+        <v-card-text v-if="this.$store.state.runSuccess">
           Your simulation has finished running and is now ready to be analysed!
+        </v-card-text>
+        <v-card-text v-else>
+          AN error occured and your simulation could not finish :(
         </v-card-text>
         <v-card-actions>
           <v-spacer />
@@ -22,6 +25,7 @@
             :to="{name: 'Analysis', params: {id: this.$store.state.simulationID }}"
           >
             <v-btn
+              v-if="this.$store.state.runSuccess"
               color="green darken-1"
               text
               @click="close()"

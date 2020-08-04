@@ -56,7 +56,7 @@ export default {
     async runSimulation () {
       this.$store.commit('runSimulation')
       await DataService.runSimulation().then(response => {
-        this.$store.commit('finishedRunning', response)
+        this.$store.commit('finishedRunning', [response.id, response.success])
         return response
       })
     }
