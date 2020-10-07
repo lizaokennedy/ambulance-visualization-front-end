@@ -21,13 +21,19 @@
         :key="i"
       >
         <v-list-item-content>
-          <HistoryItem
-            :id="item.id"
-            :start-time="item.sim_start"
-            :end-time="item.sim_end"
-            :year="item.year"
-            :status="item.status"
-          />
+          <v-card
+            flat
+            outlined="true"
+            color="secondary"
+          >
+            <HistoryItem
+              :id="item.id"
+              :start-time="item.sim_start"
+              :end-time="item.sim_end"
+              :year="item.year"
+              :status="item.status"
+            />
+          </v-card>
         </v-list-item-content>
       </v-list-item>
     </v-list>

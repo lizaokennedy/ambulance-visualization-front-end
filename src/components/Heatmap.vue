@@ -1,5 +1,5 @@
 <template>
-  <v-card height="20em">
+  <v-card height="60vh">
     <v-card-title class="font-weight-thin md-2 pr-6 pb-0">
       Ambulance travel density
     </v-card-title>
@@ -7,7 +7,7 @@
       <v-list-item-content>
         <div
           class="deck-container"
-          style="height: 15em"
+          style="height: 51vh"
         >
           <div
             id="map"
@@ -28,9 +28,16 @@ import mapboxgl from 'mapbox-gl'
 import { Deck } from '@deck.gl/core'
 import { HeatmapLayer } from '@deck.gl/aggregation-layers'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import DataService from '../services/data.service'
 
 export default {
   components: {
+  },
+  props: {
+    simId: {
+      type: String,
+      default: '0'
+    }
   },
   data () {
     return {
@@ -39,12 +46,13 @@ export default {
       mapStyle: 'mapbox://styles/lizaokennedy/ckcvtmhe90s9q1iqy33gxp0ld', // your map style
       areaName: 'Cape Town',
       viewState: {
-        latitude: -33.864481,
-        longitude: 18.470741,
-        zoom: 10,
+        latitude: -33.80328,
+        longitude: 18.4643,
+        zoom: 11.7,
         bearing: 0,
         pitch: 0
-      }
+      },
+      points: []
     }
   },
   computed: {
@@ -60,13 +68,29 @@ export default {
       }
     }
   },
-
+  async beforeCreate () {
+    // const heatmapPoints = await DataService.getHeatmapPoints(this.$route.params.id).then(response => {
+    //   return response.points
+    // })
+    // this.points = []
+    // heatmapPoints.forEach(p => {
+    //   this.points.push({ position: p, weight: 1 })
+    // })
+  },
   created () {
     // We need to set mapbox-gl library here in order to use it in template
     this.map = null
     this.deck = null
   },
-  mounted () {
+  async mounted () {
+    const heatmapPoints = await DataService.getHeatmapPoints(this.$route.params.id).then(response => {
+      return response.points
+    })
+    this.points = []
+    heatmapPoints.forEach(p => {
+      this.points.push({ position: p, weight: 10 })
+    })
+
     this.map = new mapboxgl.Map({
       accessToken: this.accessToken,
       container: this.$refs.map,
@@ -78,6 +102,8 @@ export default {
       bearing: this.viewState.bearing
     })
 
+    console.log(this.points[0])
+
     this.deck = new Deck({
       canvas: this.$refs.canvas,
       width: '100%',
@@ -86,9 +112,7 @@ export default {
       controller: true,
       layers: [
         new HeatmapLayer({
-          data: [
-            { position: [18.470741, -33.864481], weight: 1 }, { position: [18.570741, -33.904481], weight: 10 }
-          ],
+          data: this.points,
           getPosition: d => d.position,
           getWeight: d => d.weight
         })

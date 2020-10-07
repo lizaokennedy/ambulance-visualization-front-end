@@ -10,7 +10,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="headline mb-1 display-1 font-weight-thin">
-            {{ $t("analysis.title") }}
+            {{ $t("analysis.title") }} {{ this.$route.params.id }}
           </v-list-item-title>
           <v-list-item-subtitle class="font-weight-light md-2">
             {{ $t("analysis.brief") }}
@@ -55,7 +55,10 @@
         />
       </v-card> -->
       <div class="ColDisplay">
-        <Heatmap class="ColDisplayElem mr-2" />
+        <Heatmap
+          class="ColDisplayElem mr-2"
+          :sim-id="this.$route.params.id"
+        />
       </div>
     </div>
   </div>
@@ -123,9 +126,6 @@ export default {
         return response
       }
     )
-    // const responses = await DataService.getResponsesPerWeek().then(response => {
-    //   return response
-    // })
     const avgDist = await DataService.getAvgDistance(simID).then(response => {
       return response
     })
@@ -136,7 +136,6 @@ export default {
     this.avgResponseTime = parseFloat(avgResTime).toFixed(3)
     this.avgDist = parseFloat(avgDist).toFixed(2)
     this.numResponses = numresponses
-    // this.reponsesPerWeek = responses
   },
   methods: {
     getAvgResponseTime () {

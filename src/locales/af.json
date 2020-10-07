@@ -8,7 +8,7 @@
   "history": {
     "title" : "Geskiedenis van Simulasies",
     "brief" : "Alle simulasies wat voorheen uitgevoer is, word hieronder gelys. Elke item is op analise bladsy in meer diepte geanaliseer.",
-    "runningTime": "Looptyd: {hours} ure en {minutes} minute",
+    "runningTime": "Looptyd: ",
     "status": "Simulasie Status",
     "seeAnalysis": "Kyk na simulasie-analise",
     "simulation": "Simulasie"

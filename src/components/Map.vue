@@ -14,7 +14,7 @@
             :map-style="mapStyle"
             :mapbox-gl="mapbox - gl"
             :center="coordinates"
-            zoom="9"
+            zoom="11.7"
             class="setSize font-weight-thin"
           >
             <MglMarker
@@ -40,7 +40,13 @@
                     color="accent"
                     class="pa-0 ma-0"
                   />
-                  <v-btn @click="removeDepot($event,depot)">
+                  <v-btn
+                    color="accent"
+                    width="100%"
+                    :hidden="!draggable"
+                    class="font-weight-light"
+                    @click="removeDepot($event,depot)"
+                  >
                     Delete Depot
                   </v-btn>
                 </div>
@@ -96,11 +102,11 @@ export default {
       mapStyle: 'mapbox://styles/lizaokennedy/ckcvtmhe90s9q1iqy33gxp0ld', // your map style
       areaName: 'Cape Town',
       depots: [
-        { id: 0, coordinate: [18.504812, -33.817307], ambulances: '5' },
-        { id: 1, coordinate: [18.494672, -33.805127], ambulances: '3' },
-        { id: 2, coordinate: [18.486162, -33.814518], ambulances: '1' }
+        { id: 0, coordinate: [18.490664748467253, -33.824148305343314], ambulances: '1' },
+        { id: 1, coordinate: [18.48297992677189, -33.80305191008956], ambulances: '3' },
+        { id: 2, coordinate: [18.493902684448386, -33.81522631145578], ambulances: '1' }
       ],
-      coordinates: [18.470741, -33.864481]
+      coordinates: [18.4643, -33.80328]
     }
   },
   computed: {

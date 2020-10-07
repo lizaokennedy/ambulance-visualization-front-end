@@ -144,6 +144,39 @@ const DataService = {
     }
   },
 
+  async getHeatmapPoints (simID: string) {
+    let points: Array<Array<number>> = []
+    try {
+      await axios
+        .post(urlBase + 'getHeatmapPoints', { simID: simID })
+        .then(function (response: AxiosResponse) {
+          points = response.data
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return points
+    } catch (error) {
+      return error
+    }
+  },
+
+  async removeSimulation (simID: string) {
+    let success = false
+    try {
+      await axios
+        .post(urlBase + 'removeSimulation', { simID: simID })
+        .then(function (response: AxiosResponse) {
+          success = response.data
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return success
+    } catch (error) {
+      return error
+    }
+  },
   async getAvgDistance (simID: string) {
     let total = 0
     try {

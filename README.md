@@ -1,6 +1,6 @@
 # Ambu-Lenz - Front-end
 
-This project uses a docker container. In order to start up the front-end follow the following steps.
+<!-- This project uses a docker container. In order to start up the front-end follow the following steps.
 
 ## Setting up
 You will need to install docker, docker-compose , as well as, npm.
@@ -11,18 +11,18 @@ Docker can be downloaded and installed here: https://docs.docker.com/get-docker/
 ### Docker-Compose install
 Docker-Compose can be installed and downloaded here: https://docs.docker.com/compose/install/.
 
-
 ### NPM install
-Npm can be downloaded and installed here: https://www.npmjs.com/get-npm
+Npm can be downloaded and installed here: https://www.npmjs.com/get-npm -->
 
-## Creating and Running the Docker Container 
+<!-- ## Creating and Running the Docker Container 
 cd into the root directory and run the following commands
 
 1. ```docker build -t my-app:dev .```
 
-2. ``` docker-compose up -d --build```
+2. ``` docker-compose up -d --build``` -->
 
-## Useful Commands
+## To run the front-end
+First make sure the instructions for the databases and the backend has been completed. Then do the following commands to get the front end up and running.
 ```
 npm install
 ```

@@ -26,7 +26,7 @@
           >
             <v-btn
               v-if="this.$store.state.runSuccess"
-              color="green darken-1"
+              color="accent"
               text
               @click="close()"
             >
@@ -34,7 +34,7 @@
             </v-btn>
           </router-link>
           <v-btn
-            color="green darken-1"
+            color="accent"
             text
             @click="close()"
           >

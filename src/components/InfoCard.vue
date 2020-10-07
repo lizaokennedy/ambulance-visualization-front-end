@@ -23,8 +23,8 @@ export default {
       default: '#68B0AB'
     },
     data: {
-      type: Number,
-      default: 0
+      type: String,
+      default: ''
     }
   }
 }
