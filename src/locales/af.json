@@ -3,7 +3,9 @@
    "intro": "Ambu-Lenz is 'n analitiese hulpmiddel wat ontwerp is om data uit simulasies vir ambulansrespons te onttrek. Hierdie gegewens kan dan insigte bied oor hoe om bronne beter te organiseer vir 'n doeltreffender noodreaksiediens.",  
    "sidebar": {
     "startSimulation": "Begin Simulasie",
-    "showHistory": "Simulasie Geskiedenis"
+    "showHistory": "Simulasie Geskiedenis",
+    "optimize": "Optimaliseer 'n Stelsel"
+    
   },
   "history": {
     "title" : "Geskiedenis van Simulasies",

@@ -13,7 +13,7 @@ export const heatmap = new Deck({
   layers: [
     new HeatmapLayer({
       data: [
-        { position: [-122.45, 37.8], weight: 10 }
+        { position: [-122.45, 37.8], weight: 100 }
       ],
       getPosition: d => d.position,
       getWeight: d => d.weight

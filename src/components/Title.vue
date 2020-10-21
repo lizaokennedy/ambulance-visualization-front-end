@@ -36,6 +36,15 @@
               />
             </v-list-item-content>
           </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <Card
+                :title="optimize.title"
+                :icon="optimize.icon"
+                :link="optimize.link"
+              />
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-container>
     </v-card>
@@ -67,6 +76,11 @@ export default Vue.extend({
         title: 'sidebar.showHistory',
         icon: 'mdi-history',
         link: '/' + i18n.locale + '/history'
+      },
+      optimize: {
+        title: 'sidebar.optimize',
+        icon: 'mdi-chart-timeline-variant-shimmer',
+        link: '/' + i18n.locale + '/optimize'
       }
     }
   },

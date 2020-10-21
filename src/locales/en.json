@@ -3,7 +3,9 @@
   "intro": "Ambu-Lenz is an analytics tool designed to extract data from ambulance response simulations. This data can then provide insights on how to better organize resources for a more efficient emergency response service.",
   "sidebar": {
     "startSimulation": "Start Simulation",
-    "showHistory": "Simulation History"
+    "showHistory": "Simulation History",
+    "optimize": "Optimize Your System"
+
   },
   "history": {
     "title" : "History of Simulations",
@@ -32,6 +34,16 @@
       "emergency": "Emergencies",
       "depot": "Depots",
       "run": "Run Simulation"
+    }
+  },
+  "opt": {
+    "title" : "System Optimizer",
+    "brief" : "Optimize the emergency response system to ensure effective use of resources",
+    "createOpt": {
+      "title": "Start New Optimization",
+      "emergency": "Emergencies",
+      "depot": "Depots",
+      "run": "Run Optimization"
     }
   }
 }

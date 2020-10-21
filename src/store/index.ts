@@ -6,16 +6,22 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     saveLoaded: false,
+    saveOptLoaded: true,
     saving: false,
     running: false,
+    runningOpt: false,
     editDepots: 'Edit Depots',
     editing: false,
     draggable: false,
     simulationID: 24,
+    optimizationID: 0,
     runSuccess: true,
     simCompletePopup: false,
+    optCompletePopup: false,
     depots: [{}],
-    newDepotPopup: false
+    newDepotPopup: false,
+    runTime: 1500,
+    avgEmergencies: 200
   },
   mutations: {
     saveInfo (state) {
@@ -27,6 +33,16 @@ export default new Vuex.Store({
     },
     runSimulation (state) {
       state.running = true
+    },
+    runOptimization (state) {
+      state.runningOpt = true
+    },
+    finishedRunningOpt (state, payload) {
+      state.simCompletePopup = true
+      state.optimizationID = payload[0]
+      state.runSuccess = payload[1]
+      state.saveOptLoaded = true
+      state.runningOpt = false
     },
     finishedRunning (state, payload) {
       state.simCompletePopup = true

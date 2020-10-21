@@ -72,6 +72,23 @@ const DataService = {
     }
   },
 
+  async runOptimization (time: number, avg: number, depots: Array<object>) {
+    let result = ''
+    try {
+      await axios
+        .post(urlBase + 'runOptimization', { time: time, avgEmergencies: avg, depots: depots })
+        .then(function (response: AxiosResponse) {
+          result = response.data
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return result
+    } catch (error) {
+      return error
+    }
+  },
+
   createSimulationList (sims: Simulation[], length: number) {
     let i
     const simList: Simulation[] = []

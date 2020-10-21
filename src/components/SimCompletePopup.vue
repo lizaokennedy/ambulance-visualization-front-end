@@ -6,17 +6,26 @@
       max-width="290"
     >
       <v-card>
-        <v-card-title class="headline">
+        <v-card-title
+          v-if="this.$store.state.runSuccess"
+          class="headline"
+        >
           Simulation Complete
         </v-card-title>
-        <v-card-text>
+        <v-card-title
+          v-else
+          class="headline"
+        >
+          Simulation Failed
+        </v-card-title>
+        <v-card-text v-if="this.$store.state.runSuccess">
           Simulation ID: {{ this.$store.state.simulationID }}
         </v-card-text>
         <v-card-text v-if="this.$store.state.runSuccess">
           Your simulation has finished running and is now ready to be analysed!
         </v-card-text>
         <v-card-text v-else>
-          AN error occured and your simulation could not finish :(
+          An error occured and your simulation could not finish.
         </v-card-text>
         <v-card-actions>
           <v-spacer />

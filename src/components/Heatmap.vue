@@ -88,7 +88,7 @@ export default {
     })
     this.points = []
     heatmapPoints.forEach(p => {
-      this.points.push({ position: p, weight: 10 })
+      this.points.push({ position: p, weight: 1 })
     })
 
     this.map = new mapboxgl.Map({

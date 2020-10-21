@@ -4,7 +4,7 @@
       class="font-weight-thin
      md-2 pr-6 pb-0"
     >
-      Edit Simulation Details
+      Edit Optimization Details
     </v-card-title>
     <v-container class="mt-5">
       <v-combobox
@@ -16,6 +16,7 @@
         outlined
         color="accent"
       />
+
       <v-text-field
         v-model="avgEmergencies"
         label="Avg Number of Emergencies Per Day"
@@ -24,7 +25,7 @@
         append-icon="mdi-ambulance"
         color="accent"
       />
-      <v-btn
+      <!-- v-btn
         class="headline centered font-weight-light whiteText mb-2 mr-2"
         color="accent"
         width="100%"
@@ -39,7 +40,7 @@
           bottom
           color="grey"
         />
-      </v-btn>
+      </v-btn> -->
     </v-container>
   </v-card>
 </template>
