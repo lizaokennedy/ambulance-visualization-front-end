@@ -17,16 +17,17 @@
     </v-card>
     <div class="ColDisplay border">
       <EditOptDetails class="ColDisplayElem mr-2" />
-      <Map class="ColDisplayElem ml-2" />
+      <Map
+        optimization="False"
+        class="ColDisplayElem ml-2"
+      />
     </div>
-    <runOptimization class="border" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 // import Simulation from "../models/simulation.model"
-import runOptimization from '../components/RunOptimization.vue'
 import Map from '../components/Map.vue'
 import EditOptDetails from '../components/EditOptDetails.vue'
 
@@ -34,7 +35,6 @@ export default {
   name: 'Optimize',
   components: {
     Map,
-    runOptimization,
     EditOptDetails
   },
   data: () => ({

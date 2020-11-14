@@ -31,10 +31,11 @@
                     Depot ID: {{ depot.id }}
                   </v-card-subtitle>
                   <v-text-field
+                    v-if="!optimization"
                     v-model="depot.ambulances"
                     :disabled="!draggable"
                     label="Ambulances"
-                    :placeholder="depot.ambulances"
+                    :placeholder="optimization"
                     outlined
                     append-icon="mdi-ambulance"
                     color="accent"
@@ -43,8 +44,8 @@
                   <v-btn
                     color="accent"
                     width="100%"
-                    :hidden="!draggable"
                     class="font-weight-light"
+                    :disabled="!draggable"
                     @click="removeDepot($event,depot)"
                   >
                     Delete Depot
@@ -94,6 +95,13 @@ export default {
     MglMarker,
     MglPopup,
     DepotPopup
+  },
+  props: {
+    optimization: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
   },
   data () {
     return {

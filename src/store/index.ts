@@ -21,7 +21,9 @@ export default new Vuex.Store({
     depots: [{}],
     newDepotPopup: false,
     runTime: 1500,
-    avgEmergencies: 200
+    avgEmergencies: 200,
+    numEmergencies: 200,
+    ambulances: 5
   },
   mutations: {
     saveInfo (state) {
@@ -77,6 +79,15 @@ export default new Vuex.Store({
     addDepot (state, payload) {
       state.depots.push(payload)
       console.log(state.depots)
+    },
+    saveNumEmergencies (state, payload) {
+      state.numEmergencies = payload
+    },
+    saveAmbulances (state, payload) {
+      state.ambulances = payload
+    },
+    saveRunTime (state, payload) {
+      state.runTime = payload
     }
   },
   actions: {},

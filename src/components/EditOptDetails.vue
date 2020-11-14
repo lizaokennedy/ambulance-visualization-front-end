@@ -18,14 +18,23 @@
       />
 
       <v-text-field
-        v-model="avgEmergencies"
-        label="Avg Number of Emergencies Per Day"
-        :placeholder="avgEmergencies"
+        v-model="numEmergencies"
+        label="Number of Emergencies"
+        :placeholder="numEmergencies"
         outlined
         append-icon="mdi-ambulance"
         color="accent"
       />
-      <!-- v-btn
+
+      <v-text-field
+        v-model="numAmbulances"
+        label="Availiable Ambulances"
+        :placeholder="numAmbulances"
+        outlined
+        append-icon="mdi-ambulance"
+        color="accent"
+      />
+      <v-btn
         class="headline centered font-weight-light whiteText mb-2 mr-2"
         color="accent"
         width="100%"
@@ -40,7 +49,7 @@
           bottom
           color="grey"
         />
-      </v-btn> -->
+      </v-btn>
     </v-container>
   </v-card>
 </template>
@@ -55,16 +64,17 @@ export default {
       saving: false,
       saveLoaded: false,
       runTime: 1500,
-      avgEmergencies: 200,
+      numEmergencies: 200,
+      numAmbulances: 5,
       times: { '1 hour': 3600, '5 hours': 18000, '12 hours': 43200, '1 day': 86400, '4 days': 345600, '1 week': 604800 }
     }
   },
   computed: {
     saveBtnText () {
       if (this.$store.state.saving === true) {
-        return 'Saving...'
+        return 'Running...'
       } else {
-        return 'Save Settings'
+        return 'Run Optmization'
       }
     },
     btnDisabled () {
@@ -93,7 +103,7 @@ export default {
       }
 
       // check that depot info has been saved... maybe
-      await DataService.saveSettings(this.runTime, this.avgEmergencies, this.$store.state.depots).then((response) => {
+      await DataService.runOptimization(this.runTime, this.numEmergencies, this.numAmbulances, this.$store.state.depots).then((response) => {
         console.log(response)
         this.$store.commit('saveLoaded')
       })

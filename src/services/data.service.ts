@@ -71,12 +71,11 @@ const DataService = {
       return error
     }
   },
-
-  async runOptimization (time: number, avg: number, depots: Array<object>) {
+  async runOptimization (time: number, emergenies: number, ambulances: number, depots: Array<object>) {
     let result = ''
     try {
       await axios
-        .post(urlBase + 'runOptimization', { time: time, avgEmergencies: avg, depots: depots })
+        .post(urlBase + 'runOptimization', { time: time, avgEmergencies: emergenies, ambulances: ambulances, depots: depots })
         .then(function (response: AxiosResponse) {
           result = response.data
         })
