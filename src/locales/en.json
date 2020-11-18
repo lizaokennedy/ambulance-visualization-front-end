@@ -4,8 +4,8 @@
   "sidebar": {
     "startSimulation": "Start Simulation",
     "showHistory": "Simulation History",
-    "optimize": "Optimize Your System"
-
+    "optimize": "Optimize Your System",
+    "showOptHistory": "Optimization History"
   },
   "history": {
     "title" : "History of Simulations",
@@ -15,8 +15,16 @@
     "seeAnalysis": "See simulation analysis",
     "simulation": "Simulation"
   },
+  "historyOpt": {
+    "title" : "History of Optimizations",
+    "brief" : "All previously run optimizations are listed below. Each item can be viewed more in depth by going to its details page.",
+    "responseTime": "Optimal response time: ",
+    "status": "Optimization Status",
+    "seeAnalysis": "See Optimization details",
+    "optimization": "Optimization"
+  },
   "analysis": {
-    "title" : "Analysis of Simulation",
+    "title" : "Analysis of Optimization",
     "brief" : "In depth analysis of this simulation is shown below",
     "data" : {
       "tResponses" : "Total Responses",
@@ -24,6 +32,16 @@
       "aResponseTime" : "Average Response Time",
       "minutes" : "minutes",
       "RPerWeek" : "Number of responses per week"
+    }
+  },
+  "details": {
+    "title" : "Optimization Details",
+    "brief" : "Results of the optimization are displayed here.",
+    "depot" : {
+      "depotID" : "Depot ID: ",
+      "longitude" : "Longitude: ",
+      "latitude" : "Latitude: ",
+      "numAmbus" : "Ambulances: "
     }
   },
   "sim": {

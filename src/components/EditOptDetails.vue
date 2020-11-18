@@ -102,9 +102,7 @@ export default {
         this.runTime = this.times[this.runTime]
       }
 
-      // check that depot info has been saved... maybe
       await DataService.runOptimization(this.runTime, this.numEmergencies, this.numAmbulances, this.$store.state.depots).then((response) => {
-        console.log(response)
         this.$store.commit('saveLoaded')
       })
     }

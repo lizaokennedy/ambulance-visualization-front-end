@@ -66,12 +66,17 @@ export default Vue.extend({
       {
         title: 'sidebar.showHistory',
         icon: 'mdi-history',
-        link: '/' + i18n.locale + '/history'
+        link: '/' + i18n.locale + '/simulation-history'
       },
       {
         title: 'sidebar.optimize',
         icon: 'mdi-chart-timeline-variant-shimmer',
         link: '/' + i18n.locale + '/optimize'
+      },
+      {
+        title: 'sidebar.showOptHistory',
+        icon: 'mdi-calendar-clock',
+        link: '/' + i18n.locale + '/optimization-history'
       }
     ],
     mini: true

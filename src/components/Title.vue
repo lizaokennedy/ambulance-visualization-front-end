@@ -45,6 +45,15 @@
               />
             </v-list-item-content>
           </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <Card
+                :title="opthistory.title"
+                :icon="opthistory.icon"
+                :link="opthistory.link"
+              />
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-container>
     </v-card>
@@ -75,12 +84,17 @@ export default Vue.extend({
       history: {
         title: 'sidebar.showHistory',
         icon: 'mdi-history',
-        link: '/' + i18n.locale + '/history'
+        link: '/' + i18n.locale + '/simulation-history'
       },
       optimize: {
         title: 'sidebar.optimize',
         icon: 'mdi-chart-timeline-variant-shimmer',
         link: '/' + i18n.locale + '/optimize'
+      },
+      opthistory: {
+        title: 'sidebar.showOptHistory',
+        icon: 'mdi-calendar-clock',
+        link: '/' + i18n.locale + '/optimization-history'
       }
     }
   },

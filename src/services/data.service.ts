@@ -1,5 +1,7 @@
 import { AxiosResponse } from 'axios'
 import { Simulation } from '../models/simulation.model'
+import { Optimization } from '../models/optimization.model'
+
 const axios = require('axios').default
 const urlBase = 'http://localhost:5000/api/'
 const DataService = {
@@ -33,6 +35,23 @@ const DataService = {
           return error
         })
       return this.createSimulationList(sims, sims.length)
+    } catch (error) {
+      return error
+    }
+  },
+
+  async fetchOptimizations () {
+    let opts: Optimization[] = []
+    try {
+      await axios
+        .get(urlBase + 'getAllOptimizations')
+        .then(function (response: AxiosResponse) {
+          opts = response.data.optimizations
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return this.createOptimizationList(opts, opts.length)
     } catch (error) {
       return error
     }
@@ -102,6 +121,20 @@ const DataService = {
       simList.push(s)
     }
     return simList
+  },
+
+  createOptimizationList (opts: Optimization[], length: number) {
+    let i
+    const optList: Optimization[] = []
+    for (i = 0; i < length; i++) {
+      const s = new Optimization(
+        opts[i].id,
+        opts[i].status,
+        opts[i].response_time
+      )
+      optList.push(s)
+    }
+    return optList
   },
 
   async getShortestPath (node1: number, node2: number) {
@@ -193,6 +226,24 @@ const DataService = {
       return error
     }
   },
+
+  async removeOptimization (simID: string) {
+    let success = false
+    try {
+      await axios
+        .post(urlBase + 'removeOptimization', { simID: simID })
+        .then(function (response: AxiosResponse) {
+          success = response.data
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return success
+    } catch (error) {
+      return error
+    }
+  },
+
   async getAvgDistance (simID: string) {
     let total = 0
     try {
