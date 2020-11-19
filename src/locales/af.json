@@ -13,15 +13,19 @@
     "runningTime": "Looptyd: ",
     "status": "Simulasie Status",
     "seeAnalysis": "Simulasie-analise",
-    "simulation": "Simulasie"
+    "simulation": "Simulasie",
+    "noresults" : "Geen Vorige Simulasies Nie"
+
   },
   "historyOpt": {
-    "title" : "Geskiedenis of Optimizations",
+    "title" : "Geskiedenis of Optimiserings",
     "brief" : "Alle simulasies wat voorheen uitgevoer is, word hieronder gelys. Elke item is op analise bladsy in meer diepte geanaliseer.",
-    "responseTime": "Optimale Resonse tyd: ",
+    "responseTime": "Optimale Resonse tyd ",
     "status": "Optimisering Status",
     "seeAnalysis": "Optimiserings Inligting",
-    "optimization": "Optimisering"
+    "optimization": "Optimisering",
+    "noresults" : "Geen Vorige Optimiserings Nie" 
+
   },
   "analysis": {
     "title" : "Analise van Simulasie",
@@ -41,8 +45,15 @@
       "depotID:" : "Depot ID: ",
       "longitude" : "Lengtegraad: ",
       "latitude:" : "Breedtegraad: ",
-      "numAmbus" : "Aantal Ambulanse: "
-    }
+      "numAmbus" : "Ambulanse: "
+    },
+    "info" : {
+      "responseTime" :"Optimale response tyd ",
+      "usedAmbus" : "Aantal ambulanse",
+      "avgDist" : "Gemiddelde afstand"
+    },
+    "allocation" : "Toekenning",
+    "alloBrief" : "Die depots word hieronder gegee, sowel as die aantal ambulanse wat aan hulle toegeken word"
   },
   "sim": {
     "title" : "Simulasie Skepper",
@@ -53,5 +64,15 @@
       "depot": "Depots",
       "run": "Begin Simulasie"
     }
-  }
+  },
+  "waiting" : "Wag vir uitslae...",
+  "deleteOpt" : "Verwyder Optimisering",
+  "deleteSim" : "Verwyder Simulasie",
+  "deleteDepot" : "Verwyder Depot",
+  "add" : "Skep Nuwe Depot",
+  "edit" : "Verander Depot",
+  "editSimDetails" :"Verander Simulasie besonderhede",
+  "editOptDetails" :"Verander Optimisering besonderhede"
+
+
 }

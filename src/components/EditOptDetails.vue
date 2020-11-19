@@ -4,7 +4,7 @@
       class="font-weight-thin
      md-2 pr-6 pb-0"
     >
-      Edit Optimization Details
+      {{ $t("editOptDetails") }}
     </v-card-title>
     <v-container class="mt-5">
       <v-combobox
@@ -35,13 +35,14 @@
         color="accent"
       />
       <v-btn
-        class="headline centered font-weight-light whiteText mb-2 mr-2"
+        class="headline centered font-weight-light whiteText mx-2 mb-5"
         color="accent"
-        width="100%"
-        :disabled="btnDisabled"
-        @click="saveSettings()"
+        width="97%"
+        style="position: absolute; bottom: 0; left: 0"
+        :disabled="loading"
+        @click="runOpt()"
       >
-        {{ saveBtnText }}
+        {{ btnText }}
         <v-progress-linear
           :active="loading"
           :indeterminate="loading"
@@ -70,22 +71,15 @@ export default {
     }
   },
   computed: {
-    saveBtnText () {
-      if (this.$store.state.saving === true) {
+    btnText () {
+      if (this.$store.state.runningOpt === true) {
         return 'Running...'
       } else {
         return 'Run Optmization'
       }
     },
-    btnDisabled () {
-      if (this.$store.state.running || this.$store.state.saving) {
-        return true
-      } else {
-        return false
-      }
-    },
     loading () {
-      if (this.$store.state.saving) {
+      if (this.$store.state.runningOpt) {
         return true
       } else {
         return false
@@ -96,14 +90,14 @@ export default {
     this.map = null
   },
   methods: {
-    async saveSettings () {
-      this.$store.commit('saveInfo')
+    async runOpt () {
+      this.$store.commit('runOptimization')
       if (this.runTime in this.times) {
         this.runTime = this.times[this.runTime]
       }
 
       await DataService.runOptimization(this.runTime, this.numEmergencies, this.numAmbulances, this.$store.state.depots).then(() => {
-        this.$store.commit('saveLoaded')
+        this.$store.commit('finishedRunningOpt')
       })
     }
   }

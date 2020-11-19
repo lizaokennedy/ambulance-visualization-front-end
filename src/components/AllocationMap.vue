@@ -20,7 +20,7 @@
             <MglMarker
               v-for="depot in depots"
               :key="depot.id"
-              :coordinates="depot.coordinate"
+              :coordinates="[depot.lat, depot.lng]"
               :draggable="draggable"
               color="#172A3A"
               @dragend="saveLongLat($event, depot)"
@@ -71,6 +71,10 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    depots: {
+      type: Array,
+      required: true
     }
   },
   data () {
@@ -79,11 +83,6 @@ export default {
         'pk.eyJ1IjoibGl6YW9rZW5uZWR5IiwiYSI6ImNrY3Z0ZDB0cDA3aXcycW1zNW00Nmx2aTEifQ.-DZwZVyLVc1Z0m4U9KM_Pw', // your access token. Needed if you using Mapbox maps
       mapStyle: 'mapbox://styles/lizaokennedy/ckcvtmhe90s9q1iqy33gxp0ld', // your map style
       areaName: 'Cape Town',
-      depots: [
-        { id: 0, coordinate: [18.490664748467253, -33.824148305343314], ambulances: '1' },
-        { id: 1, coordinate: [18.48297992677189, -33.80305191008956], ambulances: '3' },
-        { id: 2, coordinate: [18.493902684448386, -33.81522631145578], ambulances: '1' }
-      ],
       coordinates: [18.4643, -33.80328]
     }
   },
@@ -108,8 +107,8 @@ export default {
   },
   methods: {
     saveLongLat (event, depot) {
-      this.depots[depot.id].coordinate[1] = event.marker._lngLat.lat
-      this.depots[depot.id].coordinate[0] = event.marker._lngLat.lng
+      this.depots[depot.id].lat = event.marker._lngLat.lat
+      this.depots[depot.id].lng = event.marker._lngLat.lng
       console.log(this.depots)
     },
     removeDepot (event, depot) {

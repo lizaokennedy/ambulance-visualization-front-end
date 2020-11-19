@@ -4,7 +4,7 @@
       class="font-weight-thin
      md-2 pr-6 pb-0"
     >
-      Edit Simulation Details
+      {{ $t("editSimDetails") }}
     </v-card-title>
     <v-container class="mt-5">
       <v-combobox
@@ -25,13 +25,14 @@
         color="accent"
       />
       <v-btn
-        class="headline centered font-weight-light whiteText mb-2 mr-2"
+        class="headline centered font-weight-light whiteText mx-2 mb-5"
         color="accent"
-        width="100%"
+        width="97%"
+        style="position: absolute; bottom: 0; left: 0"
         :disabled="btnDisabled"
         @click="saveSettings()"
       >
-        {{ saveBtnText }}
+        {{ btnText }}
         <v-progress-linear
           :active="loading"
           :indeterminate="loading"
@@ -59,11 +60,11 @@ export default {
     }
   },
   computed: {
-    saveBtnText () {
-      if (this.$store.state.saving === true) {
-        return 'Saving...'
+    btnText () {
+      if (this.$store.state.running === true) {
+        return 'Running...'
       } else {
-        return 'Save Settings'
+        return 'Run Simulation'
       }
     },
     btnDisabled () {
@@ -91,9 +92,7 @@ export default {
         this.runTime = this.times[this.runTime]
       }
 
-      // check that depot info has been saved... maybe
-      await DataService.saveSettings(this.runTime, this.avgEmergencies, this.$store.state.depots).then((response) => {
-        console.log(response)
+      await DataService.runSimulation(this.runTime, this.avgEmergencies, this.$store.state.depots).then(() => {
         this.$store.commit('saveLoaded')
       })
     }

@@ -19,46 +19,43 @@
       </v-list-item>
     </v-card>
 
-    <div class="d-flex flex-column flex-wrap mx-8">
-      <div class=" d-flex flex-wrap my-2">
+    <div class="d-flex flex-column flex-wrap mx-8 mb-0">
+      <div class=" d-flex flex-wrap mt-2 mb-0">
         <InfoCard
           :title="$t('details.info.responseTime')"
-          :data="avgResponseTime"
-          class="flex-grow-1"
+          :data="time()"
+          class="flex-grow-1 mr-2"
           :color="color1"
         />
         <InfoCard
-          :title="$t('details.info.avgDist')"
-          :data="avgDist"
-          class="flex-grow-1 mx-2"
-          :color="color2"
-        />
-        <InfoCard
           :title="$t('details.info.usedAmbus')"
-          :data="numAmbus"
-          class="flex-grow-1"
-          :color="color3"
+          :data="numAmbus()"
+          class="flex-grow-1 ml-2"
+          :color="color2"
         />
       </div>
     </div>
 
-    <div class="ColDisplay border">
+    <div class="ColDisplay border mt-2">
       <v-card
-        class="ColDisplayElem mr-2"
+        class="ColDisplayElem mr-2 mt-0"
         height="30rem"
         outlined
       >
-        <v-card-title class="font-weight-thin md-2 pr-6 pb-0">
-          Allocation
+        <v-card-title class="font-weight-thin md-2 mb-0 pr-6 pb-0">
+          {{ $t("details.allocation") }}
         </v-card-title>
+        <v-card-subtitle class="font-weight-thin mt-1 md-2 pr-6 pb-0">
+          {{ $t("details.alloBrief") }}
+        </v-card-subtitle>
         <v-card
           class="ColDisplayElem"
-          height="26rem"
+          height="24rem"
           flat
         >
           <vuescroll :ops="ops">
             <v-list
-              class="ma-7"
+              class="ma-1 mt-0"
             >
               <v-list-item
                 v-for="(item, i) in depots"
@@ -74,7 +71,7 @@
                       :id="item.id"
                       :lng="item.lng"
                       :lat="item.lat"
-                      :ambus="item.ambus"
+                      :ambus="item.ambulances"
                     />
                   </v-card>
                 </v-list-item-content>
@@ -83,7 +80,10 @@
           </vuescroll>
         </v-card>
       </v-card>
-      <AllocationMap class="ColDisplayElem ml-2" />
+      <AllocationMap
+        :depots="depots"
+        class="ColDisplayElem ml-2"
+      />
     </div>
   </div>
 </template>
@@ -107,12 +107,7 @@ export default {
     InfoCard
   },
   data: () => ({
-    depots: [
-      { id: 0, lng: 18, lat: -33, ambus: 2 },
-      { id: 0, lng: 18, lat: -33, ambus: 2 },
-      { id: 0, lng: 18, lat: -33, ambus: 2 },
-      { id: 0, lng: 18, lat: -33, ambus: 2 }
-    ],
+    depots: [],
     ops: {
       maxHeight: '20rem',
       vuescroll: {
@@ -141,35 +136,37 @@ export default {
     color1: 'pinkText',
     color2: 'mintText',
     color3: 'coralText',
-    avgResponseTime: 2678,
-    avgDist: 3000,
-    numAmbus: 5
-  }),
-  async beforeCreate () {
-    const optID = this.$route.params.id
-    const avgDist = await DataService.getAvgDistance(optID).then((response) => {
-      return response
-    })
-    const avgResTime = await DataService.getAvgResponseTime(optID).then(
-      (response) => {
-        return response
-      }
-    )
+    optTime: 0,
+    ambulances: 0
 
-    this.avgResponseTime = parseFloat(avgResTime).toFixed(3)
-    this.avgDist = parseFloat(avgDist).toFixed(2)
+  }),
+  mounted () {
+    DataService.fetchDepots(this.$route.params.id).then((response) => {
+      this.depots = response
+    })
+    DataService.getOptResponseTime(this.$route.params.id).then(response => {
+      this.optTime = response
+      console.log(response)
+    })
   },
   methods: {
-    getAvgResponseTime () {
-      const d = this.avgResponseTime * 60
+    time () {
+      const d = this.optTime * 60
       const h = Math.floor(d / 3600)
-      const m = Math.floor((d % 3600) / 60)
-      const s = Math.floor((d % 3600) % 60)
+      const m = Math.floor(d % 3600 / 60)
+      const s = Math.floor(d % 3600 % 60)
 
       const hDisplay = h > 0 ? h + 'h ' : ''
       const mDisplay = m > 0 ? m + 'm ' : ''
       const sDisplay = s > 0 ? s + 's ' : ''
       return hDisplay + mDisplay + sDisplay
+    },
+    numAmbus () {
+      let total = 0
+      for (let i = 0; i < this.depots.length; i++) {
+        total += this.depots[i].ambulances
+      }
+      return total
     }
   }
 }

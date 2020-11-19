@@ -48,7 +48,7 @@
                     :disabled="!draggable"
                     @click="removeDepot($event,depot)"
                   >
-                    Delete Depot
+                    {{ $t("deleteDepot") }}
                   </v-btn>
                 </div>
               </MglPopup>
@@ -64,7 +64,7 @@
               :hidden="hideAddDepotButton()"
               @click="showPopup()"
             >
-              Add New Depot
+              {{ $t("add") }}
             </v-btn>
             <v-btn
               class="headline centered font-weight-light whiteText mt-2 mb-2 mr-2 ColDisplayElem"
@@ -79,7 +79,7 @@
         </div>
       </v-list-item-content>
     </v-list-item>
-    <DepotPopup />
+    <DepotPopup :optimization="optimization" />
   </v-card>
 </template>
 

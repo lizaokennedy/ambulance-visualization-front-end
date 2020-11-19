@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="mt-13">
     <v-card
       class="home-card"
       color="white"
@@ -101,7 +101,7 @@ export default Vue.extend({
   computed: {}, // computed properties
   methods: {
     getTitle () {
-      DataService.getTitle().then(title => {
+      DataService.getTitle().then((title) => {
         if (title !== undefined) {
           const heading = document.getElementById('heading')
           if (heading !== null) {
@@ -111,7 +111,7 @@ export default Vue.extend({
       })
     },
     getShortestPath () {
-      DataService.getShortestPath(10, 12).then(path => {
+      DataService.getShortestPath(10, 12).then((path) => {
         if (path !== undefined) {
           const heading = document.getElementById('heading')
           if (heading !== null) {

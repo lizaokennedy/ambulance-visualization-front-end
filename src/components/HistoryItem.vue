@@ -47,7 +47,7 @@
               color="accent"
               @click="removeSimuation()"
             >
-              Delete Simulation
+              {{ $t("deleteSim") }}
             </v-btn>
           </v-col>
         </v-row>

@@ -19,14 +19,12 @@
       <EditDetails class="ColDisplayElem mr-2" />
       <Map class="ColDisplayElem ml-2" />
     </div>
-    <createSim class="border" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 // import Simulation from "../models/simulation.model"
-import createSim from '../components/CreateSimCard.vue'
 import Map from '../components/Map.vue'
 import EditDetails from '../components/EditDetails.vue'
 
@@ -34,7 +32,6 @@ export default {
   name: 'Simulation',
   components: {
     Map,
-    createSim,
     EditDetails
   },
   data: () => ({

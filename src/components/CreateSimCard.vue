@@ -36,9 +36,7 @@ export default {
       }
     },
     runSimDisabled () {
-      if (!this.$store.state.saveLoaded) {
-        return true
-      } else if (this.$store.state.running) {
+      if (this.$store.state.running) {
         return true
       } else {
         return false

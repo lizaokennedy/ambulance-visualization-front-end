@@ -2,7 +2,7 @@
   "welcome": "Welcome to Ambu-Lenz!",
   "intro": "Ambu-Lenz is an analytics tool designed to extract data from ambulance response simulations. This data can then provide insights on how to better organize resources for a more efficient emergency response service.",
   "sidebar": {
-    "startSimulation": "Start Simulation",
+    "startSimulation": "Run a Simulation",
     "showHistory": "Simulation History",
     "optimize": "Optimize Your System",
     "showOptHistory": "Optimization History"
@@ -13,18 +13,21 @@
     "runningTime": "Running time: ",
     "status": "Simulation Status",
     "seeAnalysis": "See simulation analysis",
-    "simulation": "Simulation"
+    "simulation": "Simulation",
+    "noresults" : "No Past Simulations"
+
   },
   "historyOpt": {
     "title" : "History of Optimizations",
     "brief" : "All previously run optimizations are listed below. Each item can be viewed more in depth by going to its details page.",
-    "responseTime": "Optimal response time: ",
+    "responseTime": "Optimal response time",
     "status": "Optimization Status",
     "seeAnalysis": "See Optimization details",
-    "optimization": "Optimization"
+    "optimization": "Optimization",
+    "noresults" : "No Past Optimizations"
   },
   "analysis": {
-    "title" : "Analysis of Optimization",
+    "title" : "Analysis of Simulation",
     "brief" : "In depth analysis of this simulation is shown below",
     "data" : {
       "tResponses" : "Total Responses",
@@ -35,7 +38,7 @@
     }
   },
   "details": {
-    "title" : "Optimization Details",
+    "title" : "Details for Optimization",
     "brief" : "Results of the optimization are displayed here.",
     "depot" : {
       "depotID" : "Depot ID: ",
@@ -47,7 +50,9 @@
       "responseTime" :"Optimal response time ",
       "usedAmbus" : "Number of ambulances used",
       "avgDist" : "Average distance"
-    }
+    },
+    "allocation" : "Allocation",
+    "alloBrief" : "The depots are given below along with the number of ambualnces allocated to them."
   },
   "sim": {
     "title" : "Simulation Creator",
@@ -68,5 +73,15 @@
       "depot": "Depots",
       "run": "Run Optimization"
     }
-  }
+  },
+  "waiting" : "Waiting...",
+  "deleteOpt" : "Delete Optimization",
+  "deleteSim" : "Delete Simulation",
+  "deleteDepot" : "Delete Depot",
+  "add" : "Add New Depot",
+  "edit" : "Edit Depot",
+  "editSimDetails" :"Edit Simulation Details",
+  "editOptDetails" :"Edit Optimization Details"
+
+
 }

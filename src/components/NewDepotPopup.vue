@@ -7,7 +7,7 @@
     >
       <v-card>
         <v-card-title class="headline font-weight-thin">
-          Add a New Depot
+          {{ $t("add") }}
         </v-card-title>
         <v-container class="mt-5">
           <v-text-field
@@ -27,6 +27,7 @@
             color="accent"
           />
           <v-text-field
+            v-if="optimization == true"
             v-model="ambulances"
             label="Number of Ambulances"
             :placeholder="ambulances"
@@ -60,6 +61,13 @@
 <script>
 export default {
   components: {},
+  props: {
+    optimization: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
   data () {
     return {
       lat: -33.803280,

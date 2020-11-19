@@ -33,6 +33,7 @@
               <v-card
                 flat
                 outlined="true"
+                elavated="24"
                 color="secondary"
               >
                 <HistoryItem
@@ -47,10 +48,14 @@
           </v-list-item>
         </v-list>
       </vuescroll>
-      <v-card flat center v-else>
-      <v-card-title class=" font-weight-thin  justify-center">
-        No past simulations
-      </v-card-title>
+      <v-card
+        v-else
+        flat
+        center
+      >
+        <v-card-title class=" font-weight-thin  justify-center">
+          {{ $t("history.noresults") }}
+        </v-card-title>
       </v-card>
     </v-card>
   </div>

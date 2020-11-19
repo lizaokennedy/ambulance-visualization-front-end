@@ -40,7 +40,7 @@ export default new Vuex.Store({
       state.runningOpt = true
     },
     finishedRunningOpt (state, payload) {
-      state.simCompletePopup = true
+      state.optCompletePopup = true
       state.optimizationID = payload[0]
       state.runSuccess = payload[1]
       state.saveOptLoaded = true

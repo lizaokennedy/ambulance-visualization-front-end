@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios'
 import { Simulation } from '../models/simulation.model'
 import { Optimization } from '../models/optimization.model'
+import { Depot } from '../models/depot.model'
 
 const axios = require('axios').default
 const urlBase = 'http://localhost:5000/api/'
@@ -57,11 +58,28 @@ const DataService = {
     }
   },
 
-  async runSimulation () {
+  async fetchDepots (optID: number) {
+    let depots: Depot[] = []
+    try {
+      await axios
+        .post(urlBase + 'getDepots', { optID: optID })
+        .then(function (response: AxiosResponse) {
+          depots = response.data.depots
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return this.createDepotList(depots, depots.length)
+    } catch (error) {
+      return error
+    }
+  },
+
+  async runSimulation (time: number, avg: number, depots: Array<object>) {
     let result = ''
     try {
       await axios
-        .get(urlBase + 'runSimulation')
+        .post(urlBase + 'runSimulation', { time: time, avgEmergencies: avg, depots: depots })
         .then(function (response: AxiosResponse) {
           result = response.data
         })
@@ -135,6 +153,21 @@ const DataService = {
       optList.push(s)
     }
     return optList
+  },
+
+  createDepotList (depots: Depot[], length: number) {
+    let i
+    const depotList: Depot[] = []
+    for (i = 0; i < length; i++) {
+      const s = new Depot(
+        depots[i].id,
+        depots[i].lng,
+        depots[i].lat,
+        depots[i].ambulances
+      )
+      depotList.push(s)
+    }
+    return depotList
   },
 
   async getShortestPath (node1: number, node2: number) {
@@ -227,11 +260,11 @@ const DataService = {
     }
   },
 
-  async removeOptimization (simID: string) {
+  async removeOptimization (optID: string) {
     let success = false
     try {
       await axios
-        .post(urlBase + 'removeOptimization', { simID: simID })
+        .post(urlBase + 'removeOptimization', { optID: optID })
         .then(function (response: AxiosResponse) {
           success = response.data
         })
@@ -267,6 +300,24 @@ const DataService = {
         .post(urlBase + 'getAvgResponseTime', { simID: simID })
         .then(function (response: AxiosResponse) {
           time = response.data
+        })
+        .catch(function (error: Error) {
+          return error
+        })
+      return time
+    } catch (error) {
+      return error
+    }
+  },
+
+  async getOptResponseTime (optID: string) {
+    let time = 0
+    try {
+      await axios
+        .post(urlBase + 'getOptResponseTime', { optID: optID })
+        .then(function (response: AxiosResponse) {
+          time = response.data
+          console.log(time)
         })
         .catch(function (error: Error) {
           return error
