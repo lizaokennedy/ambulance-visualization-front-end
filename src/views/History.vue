@@ -15,28 +15,44 @@
         </v-list-item-content>
       </v-list-item>
     </v-card>
-    <v-list class="ma-7">
-      <v-list-item
-        v-for="(item, i) in results"
-        :key="i"
+    <v-card
+      class="ma-7"
+      flat
+      height="35rem"
+    >
+      <vuescroll
+        v-if="results.length > 0"
+        :ops="ops"
       >
-        <v-list-item-content>
-          <v-card
-            flat
-            outlined="true"
-            color="secondary"
+        <v-list class="ma-7">
+          <v-list-item
+            v-for="(item, i) in results"
+            :key="i"
           >
-            <HistoryItem
-              :id="item.id"
-              :start-time="item.sim_start"
-              :end-time="item.sim_end"
-              :year="item.year"
-              :status="item.status"
-            />
-          </v-card>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
+            <v-list-item-content>
+              <v-card
+                flat
+                outlined="true"
+                color="secondary"
+              >
+                <HistoryItem
+                  :id="item.id"
+                  :start-time="item.sim_start"
+                  :end-time="item.sim_end"
+                  :year="item.year"
+                  :status="item.status"
+                />
+              </v-card>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </vuescroll>
+      <v-card flat center v-else>
+      <v-card-title class=" font-weight-thin  justify-center">
+        No past simulations
+      </v-card-title>
+      </v-card>
+    </v-card>
   </div>
 </template>
 
@@ -44,19 +60,45 @@
 // @ is an alias to /src
 import HistoryItem from '../components/HistoryItem.vue'
 import DataService from '../services/data.service'
-// import Simulation from "../models/simulation.model";
+import vuescroll from 'vuescroll'
 
 export default {
   name: 'History',
   components: {
-    HistoryItem
+    HistoryItem,
+    vuescroll
   },
   data: () => ({
     dataService: DataService,
-    results: []
+    results: [],
+    ops: {
+      maxHeight: '20rem',
+      vuescroll: {
+        mode: 'native',
+        sizeStrategy: 'percent',
+        detectResize: true
+      },
+      scrollPanel: {
+        initialScrollY: false,
+        initialScrollX: false,
+        scrollingX: true,
+        scrollingY: true,
+        speed: 300,
+        easing: undefined,
+        verticalNativeBarPos: 'right'
+      },
+      bar: {
+        background: '#68B0AB'
+      },
+      scrollButton: {
+        enable: true,
+        background: '#68B0AB',
+        opacity: 20
+      }
+    }
   }),
   mounted () {
-    DataService.fetchSimulations().then(response => {
+    DataService.fetchSimulations().then((response) => {
       this.results = response
     })
   }

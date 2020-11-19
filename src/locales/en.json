@@ -42,6 +42,11 @@
       "longitude" : "Longitude: ",
       "latitude" : "Latitude: ",
       "numAmbus" : "Ambulances: "
+    },
+    "info" : {
+      "responseTime" :"Optimal response time ",
+      "usedAmbus" : "Number of ambulances used",
+      "avgDist" : "Average distance"
     }
   },
   "sim": {

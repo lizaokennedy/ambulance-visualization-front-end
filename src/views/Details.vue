@@ -22,20 +22,20 @@
     <div class="d-flex flex-column flex-wrap mx-8">
       <div class=" d-flex flex-wrap my-2">
         <InfoCard
-          :title="$t('analysis.data.aResponseTime')"
-          :data="getAvgResponseTime()"
+          :title="$t('details.info.responseTime')"
+          :data="avgResponseTime"
           class="flex-grow-1"
           :color="color1"
         />
         <InfoCard
-          :title="$t('analysis.data.aResponseTime')"
-          :data="getAvgResponseTime()"
+          :title="$t('details.info.avgDist')"
+          :data="avgDist"
           class="flex-grow-1 mx-2"
           :color="color2"
         />
         <InfoCard
-          :title="$t('analysis.data.aResponseTime')"
-          :data="getAvgResponseTime()"
+          :title="$t('details.info.usedAmbus')"
+          :data="numAmbus"
           class="flex-grow-1"
           :color="color3"
         />
@@ -140,19 +140,17 @@ export default {
     },
     color1: 'pinkText',
     color2: 'mintText',
-    color3: 'coralText'
+    color3: 'coralText',
+    avgResponseTime: 2678,
+    avgDist: 3000,
+    numAmbus: 5
   }),
   async beforeCreate () {
-    const simID = this.$route.params.id
-    const numresponses = await DataService.getTotalResponses(simID).then(
-      (response) => {
-        return response
-      }
-    )
-    const avgDist = await DataService.getAvgDistance(simID).then((response) => {
+    const optID = this.$route.params.id
+    const avgDist = await DataService.getAvgDistance(optID).then((response) => {
       return response
     })
-    const avgResTime = await DataService.getAvgResponseTime(simID).then(
+    const avgResTime = await DataService.getAvgResponseTime(optID).then(
       (response) => {
         return response
       }
@@ -160,7 +158,6 @@ export default {
 
     this.avgResponseTime = parseFloat(avgResTime).toFixed(3)
     this.avgDist = parseFloat(avgDist).toFixed(2)
-    this.numResponses = numresponses
   },
   methods: {
     getAvgResponseTime () {

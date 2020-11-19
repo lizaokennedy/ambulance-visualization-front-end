@@ -102,7 +102,7 @@ export default {
         this.runTime = this.times[this.runTime]
       }
 
-      await DataService.runOptimization(this.runTime, this.numEmergencies, this.numAmbulances, this.$store.state.depots).then((response) => {
+      await DataService.runOptimization(this.runTime, this.numEmergencies, this.numAmbulances, this.$store.state.depots).then(() => {
         this.$store.commit('saveLoaded')
       })
     }

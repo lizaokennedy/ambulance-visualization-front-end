@@ -20,12 +20,6 @@
               </v-icon> -->
               {{ $t("details.depot.numAmbus") }} {{ ambus }}
             </v-list-item-title>
-            <v-list-item-subtitle class="font-weight-light md-2">
-              {{ $t("details.depot.longitude") }} {{ lng }}
-            </v-list-item-subtitle>
-            <v-list-item-subtitle class="font-weight-light md-2">
-              {{ $t("details.depot.latitude") }} {{ lat }}
-            </v-list-item-subtitle>
           </v-col>
         </v-row>
       </v-container>
