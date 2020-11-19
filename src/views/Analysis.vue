@@ -28,13 +28,16 @@
         />
         <InfoCard
           :title="$t('analysis.data.ptransfers')"
-          :data="avgDist + ' km'"
+          :data="avgDist + 'km '"
+          :extra="' ± ' + stdDist + 'km'"
           class="flex-grow-1 mx-2"
           :color="color2"
         />
         <InfoCard
           :title="$t('analysis.data.aResponseTime')"
-          :data="getAvgResponseTime()"
+          :data="avgResponseTime"
+          :extra="' ± ' + stdResponseTime + ''"
+
           class="flex-grow-1"
           :color="color3"
         />
@@ -126,20 +129,22 @@ export default {
         return response
       }
     )
-    const avgDist = await DataService.getAvgDistance(simID).then(response => {
+    const responseDist = await DataService.getAvgDistance(simID).then(response => {
       return response
     })
-    const avgResTime = await DataService.getAvgResponseTime(simID).then(response => {
+    const responseTime = await DataService.getAvgResponseTime(simID).then(response => {
       return response
     })
 
-    this.avgResponseTime = parseFloat(avgResTime).toFixed(3)
-    this.avgDist = parseFloat(avgDist).toFixed(2)
+    this.avgResponseTime = this.time(responseTime.avg)
+    this.stdResponseTime = this.time(responseTime.std)
+    this.avgDist = responseDist.avg.toFixed(2)
+    this.stdDist = responseDist.std.toFixed(2)
     this.numResponses = numresponses
   },
   methods: {
-    getAvgResponseTime () {
-      const d = this.avgResponseTime * 60
+    time (t) {
+      const d = t * 60
       const h = Math.floor(d / 3600)
       const m = Math.floor(d % 3600 / 60)
       const s = Math.floor(d % 3600 % 60)
@@ -147,6 +152,7 @@ export default {
       const hDisplay = h > 0 ? h + 'h ' : ''
       const mDisplay = m > 0 ? m + 'm ' : ''
       const sDisplay = s > 0 ? s + 's ' : ''
+
       return hDisplay + mDisplay + sDisplay
     }
   }

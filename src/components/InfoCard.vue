@@ -4,7 +4,10 @@
       class="headline font-weight-bold"
       :class="color"
     >
-      {{ data }}
+      {{ data }} <span
+        class="font-weight-light ml-1"
+        style="color: grey; font-size: 18px"
+      > {{ extra }} </span>
     </v-card-title>
     <v-card-subtitle class="font-weight-light">
       {{ title }}
@@ -23,6 +26,10 @@ export default {
       default: '#68B0AB'
     },
     data: {
+      type: String,
+      default: ''
+    },
+    extra: {
       type: String,
       default: ''
     }

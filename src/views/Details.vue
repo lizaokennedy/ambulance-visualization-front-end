@@ -20,17 +20,20 @@
     </v-card>
 
     <div class="d-flex flex-column flex-wrap mx-8 mb-0">
-      <div class=" d-flex flex-wrap mt-2 mb-0">
+      <div class="ColDisplay mt-2 mb-0">
         <InfoCard
           :title="$t('details.info.responseTime')"
           :data="time()"
-          class="flex-grow-1 mr-2"
+          class="ColDisplayElem mr-2"
+          style="height: 5rem"
           :color="color1"
         />
         <InfoCard
           :title="$t('details.info.usedAmbus')"
           :data="numAmbus()"
-          class="flex-grow-1 ml-2"
+          class="ColDisplayElem ml-2"
+          style="height: 5rem"
+
           :color="color2"
         />
       </div>
@@ -49,7 +52,6 @@
           {{ $t("details.alloBrief") }}
         </v-card-subtitle>
         <v-card
-          class="ColDisplayElem"
           height="24rem"
           flat
         >

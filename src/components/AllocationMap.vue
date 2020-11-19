@@ -33,7 +33,7 @@
                   <v-text-field
                     v-if="!optimization"
                     v-model="depot.ambulances"
-                    :disabled="!draggable"
+                    disabled="true"
                     label="Ambulances"
                     :placeholder="optimization"
                     outlined

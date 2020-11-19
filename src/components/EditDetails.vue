@@ -92,7 +92,8 @@ export default {
         this.runTime = this.times[this.runTime]
       }
 
-      await DataService.runSimulation(this.runTime, this.avgEmergencies, this.$store.state.depots).then(() => {
+      await DataService.runSimulation(this.runTime, this.avgEmergencies, this.$store.state.depots).then((response) => {
+        this.$store.commit('finishedRunning', [response.id, response.success])
         this.$store.commit('saveLoaded')
       })
     }
